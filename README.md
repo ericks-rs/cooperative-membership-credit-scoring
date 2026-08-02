@@ -226,6 +226,10 @@ here.
 
 ## License
 
-Add a license before publishing. MIT is a common choice for research code. The data are
-not covered by any code license and remain subject to the confidentiality agreement
-described above.
+The code in this repository is released under the MIT License, reproduced in `LICENSE`.
+
+The data are not covered by that license. `paper/dataset.csv` holds de-identified member
+records shared under the confidentiality agreement described above, and the identity of
+the cooperative and of the application provider remains withheld. Use the data for
+verifying the results reported in the manuscript. Do not attempt to re-identify members
+or to infer the source institution.
