@@ -1,0 +1,7 @@
+# Python artifacts only. This folder is a curated public bundle, so nothing
+# confidential lives here to begin with.
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db

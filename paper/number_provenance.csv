@@ -1,0 +1,18 @@
+artefak,isi,model,set_fitur,seed,ambang,prediksi,sumber
+Table 1,statistik deskriptif,tidak ada,Model B (23 peubah),tidak berlaku,tidak berlaku,"tidak ada, hanya ringkasan data",tabel1_deskriptif.csv
+Table 2,"enam metrik, rerata lima seed",kelima algoritma,A dan B,"42, 1, 7, 13, 99",0.50,"out-of-fold, 5-fold stratified",tabel2_rerata5seed.csv
+Table 3,bukti kalibrasi,kelima algoritma,A dan B,"42, 1, 7, 13, 99",tidak bergantung ambang,"out-of-fold, prediksi yang sama dengan Table 2",kalibrasi_detail.csv
+Table 4,sapuan ambang 0.20 sampai 0.60,Logistic Regression,A dan B,42,sembilan nilai,"out-of-fold seed tunggal, BUKAN rerata seed",sapuan_ambang.csv
+Table 5,sapuan rasio ongkos,Logistic Regression,A dan B,42,grid 0.05 sampai 0.95 langkah 0.01,prediksi yang sama dengan Table 4,sapuan_rasio_ongkos.csv
+Table 6,SMOTE lawan tanpa SMOTE,kelima algoritma,B saja,"42, 1, 7",0.50,"out-of-fold, TIGA seed, bukan lima",smote_vs_tanpa.csv
+Table 7,kalibrasi di bawah SMOTE,kelima algoritma,B saja,"42, 1, 7",tidak bergantung ambang,prediksi yang sama dengan Table 6,kalibrasi_smote.csv
+"Section 3.7, perbandingan ambang lawan SMOTE","recall, specificity, F1",Logistic Regression,B saja,"42, 1, 7",0.30 tanpa SMOTE lawan 0.50 dengan SMOTE,"out-of-fold, TIGA seed",ambang_vs_smote.csv
+Table 8,selisih antar kelompok,Logistic Regression,A dan B,42,0.30,prediksi yang sama dengan Table 4,keadilan_kelompok.csv
+Table 9,koefisien regresi logistik,Logistic Regression,B saja,42,tidak berlaku,"dilatih pada SELURUH data, bukan out-of-fold",koefisien_logreg_B.csv
+"Section 3.3, validasi kota",AUC per kota,Logistic Regression dan Gradient Boosting,"A dan B, peubah kota DIBUANG",42,tidak bergantung ambang,"satu-kota-ditinggalkan, BUKAN 5-fold",validasi_kota.csv
+"Section 3.3, sensitivitas keterlambatan",AUC tanpa keterlambatan_bayar,kelima algoritma,"A dan B, keterlambatan_bayar DIBUANG","42, 1, 7, 13, 99",0.50,"out-of-fold, 5-fold stratified",sensitivitas_keterlambatan.csv
+"Section 3.2, uji permutasi",sebaran nol selisih AUC,Logistic Regression,A dan B,"42, pembagian lipatan DITAHAN TETAP",tidak bergantung ambang,"out-of-fold, 200 replikasi permutasi","uji_permutasi.csv, permutasi_dua_model.csv"
+"Section 3.9, sensitivitas penalti",koefisien pada C=1 dan C=1e6,Logistic Regression,B saja,42,tidak berlaku,dilatih pada SELURUH data,sensitivitas_penalti.csv
+Inferensi selisih AUC (baru),selang bootstrap dan uji DeLong,kelima algoritma,A dan B,"42, 1, 7, 13, 99 untuk bootstrap, 42 untuk DeLong",tidak bergantung ambang,"out-of-fold, prediksi yang sama dengan Table 2",inferensi_delta_auc.csv
+Permukaan biaya (baru),bentuk kurva dan kestabilan argmin,Logistic Regression,A dan B,42,grid 0.05 sampai 0.95 langkah 0.01,prediksi yang sama dengan Table 4 dan Table 5,"permukaan_biaya.csv, stabilitas_argmin.csv"
+AUC univariat (baru),"mentah, terarah, dan model satu peubah",Logistic Regression untuk model satu peubah,23 peubah satu per satu,"42, 1, 7, 13, 99 untuk model satu peubah",tidak bergantung ambang,mentah dan terarah dihitung langsung dari data,auc_univariat.csv

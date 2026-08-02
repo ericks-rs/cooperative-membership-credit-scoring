@@ -1,0 +1,26 @@
+# Environment paper LoanCreditScoring.
+# Python 3.10.9.
+#
+# Versi di-pin supaya angka yang dilaporkan di naskah dapat dihasilkan ulang
+# persis. Ketahanannya sudah diuji: perbandingan utama dijalankan ulang dengan
+# scikit-learn 1.6.1 sementara numpy, pandas, dan scipy ditahan pada versi yang
+# sama, dan seluruh AUC serta Brier di Table 2 tereproduksi persis untuk kelima
+# algoritma dan kedua set fitur.
+#
+# Pasang:
+#   python -m venv .venv
+#   .venv\Scripts\python.exe -m pip install -r requirements.txt
+
+# Dibutuhkan oleh eksperimen_koperasi.py.
+numpy==2.2.6
+pandas==2.3.3
+scikit-learn==1.7.2
+scipy==1.15.3
+statsmodels==0.14.6        # GLM untuk calibration slope dan intercept
+imbalanced-learn==0.14.2   # SMOTE
+matplotlib==3.10.9         # dua gambar naskah
+
+# Alat pengembangan. Konfigurasi keduanya ada di pyproject.toml supaya hasilnya
+# sama antar mesin. Tidak diperlukan untuk menjalankan eksperimen.
+black==26.5.1
+ruff==0.16.0

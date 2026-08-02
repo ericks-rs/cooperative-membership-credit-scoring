@@ -1,0 +1,25 @@
+# Konfigurasi alat pengembangan paper LoanCreditScoring.
+#
+# Berkas ini disalin ke unmeka supaya black dan ruff memberi hasil yang sama
+# di laptop maupun di server. Tanpa ini, perbedaan konfigurasi default antar
+# mesin dapat memunculkan diff format yang bukan berasal dari perubahan kode.
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+exclude = [".venv", "results", "artifacts", "figures", "runs", "Data"]
+
+[tool.ruff.lint]
+# E, W  pycodestyle      F  pyflakes        I   isort
+# B     bugbear          UP pyupgrade       SIM flake8-simplify
+select = ["E", "W", "F", "I", "B", "UP", "SIM"]
+ignore = [
+    "E501",  # panjang baris diurus black, bukan ruff
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["common", "folds"]

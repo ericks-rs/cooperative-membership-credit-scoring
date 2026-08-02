@@ -1,0 +1,6 @@
+Model,selisih_rerata_seed,sd_antar_seed,boot_lo,boot_hi,boot_se,delong_selisih_seed42,delong_se,delong_z,delong_p,lolos_kriteria
+Logistic Regression,0.0265,0.0014,0.0158,0.0379,0.0057,0.0248,0.006,4.137,3.514e-05,True
+Decision Tree,0.0099,0.0088,-0.0058,0.0262,0.0083,0.0112,0.0133,0.839,0.4014,False
+Random Forest,0.034,0.0034,0.0192,0.0488,0.0076,0.0312,0.0083,3.743,0.0001818,True
+Gradient Boosting,0.0289,0.0032,0.0167,0.0416,0.0064,0.0259,0.0071,3.632,0.0002807,True
+SVM (RBF),0.0317,0.0019,0.0185,0.0449,0.0069,0.0304,0.0073,4.151,3.308e-05,True

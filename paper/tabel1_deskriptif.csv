@@ -1,0 +1,50 @@
+peubah,jenis,taraf,n,persen,ringkasan,gagal_bayar
+usia,numerik,,2000,,36 (31 to 43),
+jumlah_tanggungan,numerik,,2000,,1 (0 to 2),
+penghasilan_bulanan,numerik,,2000,,"5,092,500 (3,384,250 to 7,125,750)",
+jumlah_pinjaman,numerik,,2000,,"21,693,000 (13,706,750 to 34,840,750)",
+tenor_pinjaman,numerik,,2000,,36 (24 to 48),
+suku_bunga,numerik,,2000,,12 (12 to 13),
+rasio_hutang,numerik,,2000,,0.222 (0.180 to 0.271),
+riwayat_pinjaman,numerik,,2000,,1 (0 to 2),
+keterlambatan_bayar,numerik,,2000,,0 (0 to 1),
+lama_keanggotaan,numerik,,2000,,39 (23 to 60),
+simpanan_pokok,numerik,,2000,,"100,000 (100,000 to 100,000)",
+simpanan_wajib,numerik,,2000,,"3,850,000 (1,950,000 to 7,000,000)",
+simpanan_sukarela,numerik,,2000,,"541,000 (302,000 to 996,500)",
+transaksi_koperasi,numerik,,2000,,"2,427,500 (1,192,000 to 4,577,000)",
+jenis_kelamin,kategorikal,L,986,49.3,,0.31
+jenis_kelamin,kategorikal,P,1014,50.7,,0.298
+status_perkawinan,kategorikal,Belum Menikah,818,40.9,,0.263
+status_perkawinan,kategorikal,Cerai,36,1.8,,0.194
+status_perkawinan,kategorikal,Menikah,1146,57.3,,0.337
+pendidikan,kategorikal,D3,348,17.4,,0.313
+pendidikan,kategorikal,S1,509,25.4,,0.196
+pendidikan,kategorikal,S2,157,7.8,,0.14
+pendidikan,kategorikal,SMA,986,49.3,,0.382
+pekerjaan,kategorikal,Buruh,176,8.8,,0.494
+pekerjaan,kategorikal,Guru,170,8.5,,0.106
+pekerjaan,kategorikal,Karyawan Swasta,356,17.8,,0.239
+pekerjaan,kategorikal,Nelayan,144,7.2,,0.444
+pekerjaan,kategorikal,PNS,219,11.0,,0.183
+pekerjaan,kategorikal,Pedagang,223,11.2,,0.3
+pekerjaan,kategorikal,Perawat,87,4.4,,0.161
+pekerjaan,kategorikal,Petani,161,8.0,,0.429
+pekerjaan,kategorikal,UMKM,257,12.8,,0.385
+pekerjaan,kategorikal,Wiraswasta,207,10.4,,0.314
+kota,kategorikal,Bandung,236,11.8,,0.305
+kota,kategorikal,Jakarta,250,12.5,,0.304
+kota,kategorikal,Makassar,244,12.2,,0.348
+kota,kategorikal,Medan,268,13.4,,0.299
+kota,kategorikal,Palembang,263,13.2,,0.259
+kota,kategorikal,Semarang,249,12.4,,0.353
+kota,kategorikal,Surabaya,232,11.6,,0.259
+kota,kategorikal,Yogyakarta,258,12.9,,0.306
+jenis_anggota,kategorikal,Biasa,1865,93.2,,0.292
+jenis_anggota,kategorikal,Calon,135,6.8,,0.467
+partisipasi_rat,kategorikal,Tidak,721,36.0,,0.343
+partisipasi_rat,kategorikal,Ya,1279,64.0,,0.282
+sistem_potong_gaji,kategorikal,Tidak,1218,60.9,,0.377
+sistem_potong_gaji,kategorikal,Ya,782,39.1,,0.191
+status_keaktifan,kategorikal,Aktif,1428,71.4,,0.279
+status_keaktifan,kategorikal,Pasif,572,28.6,,0.365

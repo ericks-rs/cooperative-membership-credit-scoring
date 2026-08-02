@@ -1,0 +1,8 @@
+jalur,n_peubah,n_kolom_matriks,id_di_daftar_fitur,id_di_matriks_terlatih
+Model A,14,31,False,False
+Model B,23,40,False,False
+Model A tanpa kota (validasi kota),13,24,False,False
+Model B tanpa kota (validasi kota),22,33,False,False
+Model A tanpa keterlambatan_bayar,13,30,False,False
+Model B tanpa keterlambatan_bayar,22,39,False,False
+Blok keanggotaan saja,9,9,False,False
