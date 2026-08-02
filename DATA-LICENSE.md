@@ -24,9 +24,9 @@ provided you give appropriate credit.
 Anyone who uses these data must cite the source publication. Until the article appears,
 cite the manuscript and this repository:
 
-> Indosatrya, A., and Swedia, E. R. The Incremental Predictive Value of Cooperative
-> Membership Variables for Loan Default Classification: Consistent Gains Across Five
-> Algorithms and Nine Decision Thresholds. Manuscript under review. Data and code:
+> Indosatrya, A., and Swedia, E. R. The Incremental Predictive Value of Membership
+> Variables for Loan Default Prediction in an Indonesian Savings and Credit
+> Cooperative. Manuscript under review. Data and code:
 > https://github.com/ericks-rs/cooperative-membership-credit-scoring
 
 A BibTeX entry is given in `README.md`. Replace it with the published reference once the
