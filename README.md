@@ -226,10 +226,15 @@ here.
 
 ## License
 
-The code in this repository is released under the MIT License, reproduced in `LICENSE`.
+The code is released under the MIT License, reproduced in `LICENSE`.
 
-The data are not covered by that license. `paper/dataset.csv` holds de-identified member
-records shared under the confidentiality agreement described above, and the identity of
-the cooperative and of the application provider remains withheld. Use the data for
-verifying the results reported in the manuscript. Do not attempt to re-identify members
-or to infer the source institution.
+The data are released under CC BY 4.0, set out in `DATA-LICENSE.md`. You are free to use,
+share, and adapt `paper/dataset.csv` for any purpose, including commercially, and you do
+not need to ask us first. All we ask in return is a citation, using the BibTeX entry
+below.
+
+Two notes carry over from the agreement under which the records were obtained. The
+cooperative and the application provider are not named anywhere in this repository, so
+please leave them unnamed in anything you publish from these data. The records also carry
+no names, identity numbers, or contact details, so please do not try to re-identify
+individual members.
