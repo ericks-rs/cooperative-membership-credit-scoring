@@ -1,4 +1,4 @@
-# The Incremental Predictive Value of Membership Variables for Loan Default Prediction in an Indonesian Savings and Credit Cooperative
+# The Incremental Predictive Value of Cooperative Membership Variables for Loan Default Classification
 
 Reproducibility code for the study on whether cooperative membership variables add
 predictive value for loan default classification, evaluated across five algorithms
@@ -214,8 +214,8 @@ here.
 
 ```bibtex
 @article{loancreditscoring,
-  title   = {The Incremental Predictive Value of Membership Variables for Loan
-             Default Prediction in an Indonesian Savings and Credit Cooperative},
+  title   = {The Incremental Predictive Value of Cooperative Membership Variables
+             for Loan Default Classification},
   author  = {Indosatrya, Akbar and Swedia, Ericks Rachmat},
   year    = {2026},
   note    = {Manuscript under review}
