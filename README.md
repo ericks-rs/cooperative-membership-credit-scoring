@@ -67,9 +67,8 @@ The de-identified dataset used in the study is included in this repository as
 `paper/dataset.csv`, so the analysis reproduces out of the box. It was obtained from a
 savings and credit cooperative in Indonesia through a provider of cooperative
 financial-system applications, and de-identified by the provider before analysis, with
-no names, identity numbers, or contact information. The identity of the cooperative and
-of the provider is withheld under a confidentiality agreement. Only the de-identified
-member-level records are shared here.
+no names, identity numbers, or contact information. Neither the cooperative nor the provider is
+named. Only the de-identified member-level records are shared here.
 
 The file has 2,000 rows and the following 25 columns (one row per member, no missing
 values):
@@ -233,8 +232,8 @@ share, and adapt `paper/dataset.csv` for any purpose, including commercially, an
 not need to ask us first. All we ask in return is a citation, using the BibTeX entry
 below.
 
-Two notes carry over from the agreement under which the records were obtained. The
-cooperative and the application provider are not named anywhere in this repository, so
+Two notes. The cooperative and the application provider are not named anywhere in this
+repository, so
 please leave them unnamed in anything you publish from these data. The records also carry
 no names, identity numbers, or contact details, so please do not try to re-identify
 individual members.

@@ -34,13 +34,11 @@ article carries a DOI.
 
 ## Two requests that sit outside the licence
 
-Neither is a copyright term. Both follow from the agreement under which the records were
-obtained and from ordinary research ethics, and neither limits what CC BY 4.0 allows you
-to do with the data.
+Neither is a copyright term. Both follow from ordinary research ethics, and neither
+limits what CC BY 4.0 allows you to do with the data.
 
 **Please leave the source institution unnamed.** The cooperative and the application
-provider are not identified anywhere in this repository, under a confidentiality
-agreement.
+provider are not identified anywhere in this repository.
 
 **Please do not attempt re-identification.** The provider removed names, identity
 numbers, and contact details before the data reached the authors.
