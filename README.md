@@ -56,6 +56,7 @@ so the two scripts cannot drift apart unnoticed.
     ├── stabilitas_argmin.csv  bootstrap spread of the cost-minimizing threshold
     ├── auc_univariat.csv      univariate AUC for all 23 variables
     ├── gambar_permukaan_biaya.png cost surface figure
+    ├── gambar_ulang.py        rebuilds the three figures at 600 DPI without rerunning the experiments
     ├── number_provenance.py   maps every reported figure to the run that produced it
     ├── number_provenance.csv   configuration behind each table and analysis
     └── apparent_mismatches.csv pairs of figures that look inconsistent, and why they are not
