@@ -1,8 +1,7 @@
 # Cooperative membership variables in credit scoring
 
 Data and code for the paper *Cooperative membership variables add predictive
-value to loan default prediction across algorithms and decision thresholds*,
-submitted to Applied Computer Science.
+value to early loan default prediction*, submitted to Applied Computer Science.
 
 The paper asks a single question. A savings and credit cooperative observes
 things a bank does not, such as how long someone has been a member, what they
