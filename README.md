@@ -22,6 +22,7 @@ the working directory.
 | File | What it is |
 |---|---|
 | `dataset.csv` | 2,000 de-identified member records, 25 columns |
+| `DATA_DICTIONARY.md` | English name, unit, and category labels for every column |
 | `eksperimen_koperasi.py` | Main experiment |
 | `eksperimen_lanjutan.py` | Inference and the four robustness analyses |
 | `gambar_ulang.py` | Redraws the three source figures at 600 dpi |
@@ -100,7 +101,8 @@ is excluded from every feature matrix. There are no missing values and no
 duplicate rows.
 
 Column names and category labels are in Indonesian, matching the cooperative's
-own information system. The paper gives the English names.
+own information system. `DATA_DICTIONARY.md` maps every column to the English
+name used in the paper, states the unit, and translates every category label.
 
 The records come from a savings and credit cooperative in Indonesia, supplied
 through a provider of cooperative financial system applications. The provider
