@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="174mm" height="122mm" viewBox="0 0 174 122">
+<title>Research design and evaluation of cooperative membership information</title>
+<desc>A compact two-column flowchart. Data, paired feature sets, a shared training protocol, and out-of-fold predictions appear on the left. Additional analyses refit models; main inference and practical evaluations use generated predictions.</desc>
+<rect width="174" height="122" fill="white"/>
+<polyline points="42.5,19 42.5,23 21.5,23 21.5,27" fill="none" stroke="#333333" stroke-width="0.247"/>
+<polygon points="21.5,27 22.05,25.75 20.95,25.75" fill="#333333"/>
+<polyline points="42.5,23 63.5,23 63.5,27" fill="none" stroke="#333333" stroke-width="0.247"/>
+<polygon points="63.5,27 64.05,25.75 62.95,25.75" fill="#333333"/>
+<polyline points="21.5,48 21.5,52 42.5,52 42.5,55" fill="none" stroke="#333333" stroke-width="0.247"/>
+<polygon points="42.5,55 43.05,53.75 41.95,53.75" fill="#333333"/>
+<polyline points="63.5,48 63.5,52 42.5,52" fill="none" stroke="#333333" stroke-width="0.247"/>
+<polyline points="42.5,100 42.5,105" fill="none" stroke="#333333" stroke-width="0.247"/>
+<polygon points="42.5,105 43.05,103.75 41.95,103.75" fill="#333333"/>
+<polyline points="82,70 85.5,70 85.5,17 92,17" fill="none" stroke="#333333" stroke-width="0.247"/>
+<polygon points="92,17 90.75,16.45 90.75,17.55" fill="#333333"/>
+<polyline points="82,111.5 89,111.5 89,57 92,57" fill="none" stroke="#333333" stroke-width="0.247"/>
+<polygon points="92,57 90.75,56.45 90.75,57.55" fill="#333333"/>
+<polyline points="89,111.5 92,111.5" fill="none" stroke="#333333" stroke-width="0.247"/>
+<polygon points="92,111.5 90.75,110.95 90.75,112.05" fill="#333333"/>
+<rect x="3" y="3" width="79" height="16" fill="white" stroke="#202020" stroke-width="0.194"/>
+<rect x="3.1" y="3.1" width="78.8" height="6.7" fill="#F1F1F1" stroke="none" stroke-width="0.194"/>
+<text x="42.5" y="7.6" font-family="Times New Roman, Times, serif" font-size="3.3514" font-weight="bold" text-anchor="middle" fill="#111111">Cooperative member records</text>
+<text x="42.5" y="13.8" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">2,000 members, 608 defaults within 24 months</text>
+<rect x="3" y="27" width="37" height="21" fill="white" stroke="#202020" stroke-width="0.194"/>
+<rect x="3.1" y="27.1" width="36.8" height="6.7" fill="#F1F1F1" stroke="none" stroke-width="0.194"/>
+<text x="21.5" y="31.6" font-family="Times New Roman, Times, serif" font-size="3.3514" font-weight="bold" text-anchor="middle" fill="#111111">Model A</text>
+<text x="21.5" y="38" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">14 conventional</text>
+<text x="21.5" y="42" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">borrower and loan</text>
+<text x="21.5" y="46" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">variables</text>
+<rect x="45" y="27" width="37" height="21" fill="white" stroke="#202020" stroke-width="0.194"/>
+<rect x="45.1" y="27.1" width="36.8" height="6.7" fill="#F1F1F1" stroke="none" stroke-width="0.194"/>
+<text x="63.5" y="31.6" font-family="Times New Roman, Times, serif" font-size="3.3514" font-weight="bold" text-anchor="middle" fill="#111111">Model B</text>
+<text x="63.5" y="38" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">The same 14 variables</text>
+<text x="63.5" y="42" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">plus 9 membership</text>
+<text x="63.5" y="46" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">variables</text>
+<rect x="3" y="55" width="79" height="45" fill="white" stroke="#202020" stroke-width="0.194"/>
+<rect x="3.1" y="55.1" width="78.8" height="6.7" fill="#F1F1F1" stroke="none" stroke-width="0.194"/>
+<text x="42.5" y="59.6" font-family="Times New Roman, Times, serif" font-size="3.3514" font-weight="bold" text-anchor="middle" fill="#111111">Shared training and validation</text>
+<text x="42.5" y="65.6" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">One-hot encoding and standardization</text>
+<text x="42.5" y="69.2" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">fitted on training data only</text>
+<text x="42.5" y="73.6" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">Stratified 5-fold cross-validation</text>
+<text x="42.5" y="77.2" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">repeated across five seeds</text>
+<text x="42.5" y="81.6" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">Logistic regression, decision tree,</text>
+<text x="42.5" y="85.2" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">random forest, gradient boosting,</text>
+<text x="42.5" y="88.8" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">and support vector machine</text>
+<text x="42.5" y="93.2" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">Matched settings within each algorithm</text>
+<text x="42.5" y="96.8" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">and the same splits for Model A and Model B</text>
+<rect x="3" y="105" width="79" height="13" fill="white" stroke="#202020" stroke-width="0.194"/>
+<rect x="3.1" y="105.1" width="78.8" height="6.7" fill="#F1F1F1" stroke="none" stroke-width="0.194"/>
+<text x="42.5" y="109.6" font-family="Times New Roman, Times, serif" font-size="3.3514" font-weight="bold" text-anchor="middle" fill="#111111">Out-of-fold predictions</text>
+<text x="42.5" y="115.5" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">Paired by member and seed</text>
+<rect x="92" y="3" width="79" height="30" fill="white" stroke="#202020" stroke-width="0.194"/>
+<rect x="92.1" y="3.1" width="78.8" height="6.7" fill="#F1F1F1" stroke="none" stroke-width="0.194"/>
+<text x="131.5" y="7.6" font-family="Times New Roman, Times, serif" font-size="3.3514" font-weight="bold" text-anchor="middle" fill="#111111">Additional analyses with model refitting</text>
+<text x="131.5" y="14" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">Permutation of membership variables</text>
+<text x="131.5" y="18.6" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">Exclusion of payment lateness</text>
+<text x="131.5" y="23.2" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">Leave-one-city-out validation</text>
+<text x="131.5" y="27.8" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">Membership-only models</text>
+<rect x="92" y="40" width="79" height="45" fill="white" stroke="#202020" stroke-width="0.194"/>
+<rect x="92.1" y="40.1" width="78.8" height="6.7" fill="#F1F1F1" stroke="none" stroke-width="0.194"/>
+<text x="131.5" y="44.6" font-family="Times New Roman, Times, serif" font-size="3.3514" font-weight="bold" text-anchor="middle" fill="#111111">Main comparison and statistical inference</text>
+<text x="131.5" y="51" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">Accuracy, precision, recall, F1, AUC,</text>
+<text x="131.5" y="55" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">and Brier score</text>
+<text x="131.5" y="60.4" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">Paired bootstrap with 2,000 resamples</text>
+<text x="131.5" y="65" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">DeLong test using primary seed 42</text>
+<rect x="92.1" y="68.3" width="78.8" height="16.6" fill="#F1F1F1" stroke="none" stroke-width="0.194"/>
+<text x="131.5" y="73" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="bold" text-anchor="middle" fill="#111111">AUC gain supported only when</text>
+<text x="131.5" y="77.7" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">the bootstrap interval is entirely above zero</text>
+<text x="131.5" y="82.3" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">and the DeLong p-value is below 0.05</text>
+<rect x="92" y="92" width="79" height="26" fill="white" stroke="#202020" stroke-width="0.194"/>
+<rect x="92.1" y="92.1" width="78.8" height="6.7" fill="#F1F1F1" stroke="none" stroke-width="0.194"/>
+<text x="131.5" y="96.6" font-family="Times New Roman, Times, serif" font-size="3.3514" font-weight="bold" text-anchor="middle" fill="#111111">Practical evaluation</text>
+<text x="131.5" y="102.6" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">Calibration</text>
+<text x="131.5" y="106.7" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">Decision thresholds and error costs</text>
+<text x="131.5" y="110.8" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">SMOTE versus threshold adjustment</text>
+<text x="131.5" y="114.9" font-family="Times New Roman, Times, serif" font-size="3.1750" font-weight="normal" text-anchor="middle" fill="#111111">Flagging and errors across member groups</text>
+</svg>

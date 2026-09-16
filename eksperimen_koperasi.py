@@ -548,11 +548,10 @@ ax.plot(fb, tb, "-", lw=1.8, label=f"Model B (AUC {roc_auc_score(y, pB):.4f})")
 ax.plot([0, 1], [0, 1], ":", color="gray", lw=1)
 ax.set_xlabel("False positive rate")
 ax.set_ylabel("True positive rate")
-ax.set_title("ROC curve, logistic regression")
 ax.legend(loc="lower right")
 ax.grid(alpha=0.3)
 fig.tight_layout()
-fig.savefig("gambar_roc.png", dpi=330)
+fig.savefig("gambar_roc.png", dpi=600)
 
 fig, ax = plt.subplots(figsize=(5.5, 5))
 for p, lab, st in [(pA, "Model A", "--"), (pB, "Model B", "-")]:
@@ -561,11 +560,10 @@ for p, lab, st in [(pA, "Model A", "--"), (pB, "Model B", "-")]:
 ax.plot([0, 1], [0, 1], ":", color="gray", lw=1, label="Perfectly calibrated")
 ax.set_xlabel("Mean predicted probability")
 ax.set_ylabel("Observed default rate")
-ax.set_title("Calibration curve, logistic regression")
 ax.legend()
 ax.grid(alpha=0.3)
 fig.tight_layout()
-fig.savefig("gambar_kalibrasi.png", dpi=330)
+fig.savefig("gambar_kalibrasi.png", dpi=600)
 
 for t in (0.50, AMBANG_OPERASI):
     tn, fp, fn, tp = confusion_matrix(y, (pB >= t).astype(int)).ravel()

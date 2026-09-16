@@ -4,7 +4,7 @@
 # Versi di-pin supaya angka yang dilaporkan di naskah dapat dihasilkan ulang
 # persis. Ketahanannya sudah diuji: perbandingan utama dijalankan ulang dengan
 # scikit-learn 1.6.1 sementara numpy, pandas, dan scipy ditahan pada versi yang
-# sama, dan seluruh AUC serta Brier di Table 2 tereproduksi persis untuk kelima
+# sama, dan seluruh AUC serta Brier di Table 1 tereproduksi persis untuk kelima
 # algoritma dan kedua set fitur.
 #
 # Pasang:
@@ -18,7 +18,13 @@ scikit-learn==1.7.2
 scipy==1.15.3
 statsmodels==0.14.6        # GLM untuk calibration slope dan intercept
 imbalanced-learn==0.14.2   # SMOTE
-matplotlib==3.10.9         # dua gambar naskah
+matplotlib==3.10.9         # gambar sumber dan Fig. 2
+
+# Dibutuhkan oleh create_fig1_revised.py (Fig. 1). PNG dirasterisasi dari PDF
+# lewat pdf2image, jadi pdftoppm dari poppler harus ada di PATH (di Windows,
+# MiKTeX menyediakannya di miktex/bin/x64).
+reportlab==5.0.1
+pdf2image==1.17.0
 
 # Alat pengembangan. Konfigurasi keduanya ada di pyproject.toml supaya hasilnya
 # sama antar mesin. Tidak diperlukan untuk menjalankan eksperimen.

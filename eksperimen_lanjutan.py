@@ -532,12 +532,11 @@ ax.annotate(
 )
 ax.set_xlabel("Classification threshold")
 ax.set_ylabel("Cost relative to the minimum for that ratio")
-ax.set_title("Cost surface, logistic regression Model B")
 ax.set_ylim(0.98, 1.6)
 ax.legend(fontsize=8)
 ax.grid(alpha=0.3)
 fig.tight_layout()
-fig.savefig("gambar_permukaan_biaya.png", dpi=330)
+fig.savefig("gambar_permukaan_biaya.png", dpi=600)
 print("  gambar_permukaan_biaya.png tersimpan")
 
 print("\n" + garis)

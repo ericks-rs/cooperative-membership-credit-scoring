@@ -1,0 +1,25 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Copyright (c) 2026 Akbar Indosatrya and Ericks Rachmat Swedia
+
+This licence covers `dataset.csv` and every derived result file in this
+repository, meaning the CSV files written by the analysis scripts and the PNG
+figures. The scripts themselves are covered by the MIT Licence in `LICENSE`.
+
+You are free to share and adapt this material for any purpose, including
+commercially, provided you give appropriate credit, link to the licence, and
+indicate whether changes were made.
+
+Attribution is given by citing the article:
+
+  Indosatrya, A., & Swedia, E.R. (2026). The predictive value of cooperative
+  membership variables for loan default. Journal of Applied Engineering and
+  Technological Science.
+
+The full licence text is at https://creativecommons.org/licenses/by/4.0/legalcode
+and a plain-language summary at https://creativecommons.org/licenses/by/4.0/
+
+A note on the data, not a licence term. The records were de-identified before
+release. Names, identity numbers, and contact information were removed by the
+provider of the cooperative financial system application. Please do not attempt
+to re-identify any member.
