@@ -1,4 +1,4 @@
-Model,Fitur,REL,RES,UNC,slope,intercept,ECE
+Model,Features,REL,RES,UNC,slope,intercept,ECE
 Logistic Regression,A,0.00059,0.04294,0.21158,0.9096,0.0019,0.0196
 Logistic Regression,B,0.00096,0.05271,0.21158,0.8833,0.0023,0.0247
 Decision Tree,A,0.00851,0.0234,0.21158,0.2123,0.0021,0.0654

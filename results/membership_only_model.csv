@@ -1,4 +1,4 @@
-Model,AUC_keanggotaan_saja,sd_antar_seed,boot_lo,boot_hi,AUC_A,AUC_B
+Model,AUC_membership_only,sd_across_seeds,boot_lo,boot_hi,AUC_A,AUC_B
 Logistic Regression,0.6801,0.0032,0.6556,0.7051,0.7764,0.8028
 Decision Tree,0.6253,0.011,0.6018,0.6471,0.7004,0.7103
 Random Forest,0.6163,0.0041,0.5902,0.6409,0.7489,0.783

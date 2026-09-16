@@ -18,7 +18,8 @@ scikit-learn==1.7.2
 scipy==1.15.3
 statsmodels==0.14.6        # GLM untuk calibration slope dan intercept
 imbalanced-learn==0.14.2   # SMOTE
-matplotlib==3.10.9         # gambar sumber dan Fig. 2
+matplotlib==3.10.9         # gambar sumber
+pillow==12.3.0             # compose_fig2.py; di-pin supaya PNG identik byte per byte
 
 # Dibutuhkan oleh create_fig1_revised.py (Fig. 1). PNG dirasterisasi dari PDF
 # lewat pdf2image, jadi pdftoppm dari poppler harus ada di PATH (di Windows,

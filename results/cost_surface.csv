@@ -1,4 +1,4 @@
-rasio,Fitur,ambang_argmin,biaya_min,datar_dari,datar_sampai,lebar_datar,biaya_di_030,kelebihan_biaya_030_persen,ambang_030_di_daerah_datar
+ratio,Features,threshold_argmin,cost_min,flat_from,flat_to,flat_width,cost_at_030,excess_cost_at_030_pct,threshold_030_in_flat_region
 1.0,A,0.52,0.248,0.49,0.54,0.05,0.294,18.55,False
 1.0,B,0.48,0.232,0.48,0.55,0.07,0.2755,18.75,False
 1.5,A,0.37,0.3192,0.37,0.38,0.01,0.3375,5.72,False

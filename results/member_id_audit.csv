@@ -1,0 +1,8 @@
+path,n_variables,n_matrix_columns,id_in_feature_list,id_in_fitted_matrix
+Model A,14,31,False,False
+Model B,23,40,False,False
+Model A without city (leave-one-city-out),13,24,False,False
+Model B without city (leave-one-city-out),22,33,False,False
+Model A without payment lateness,13,30,False,False
+Model B without payment lateness,22,39,False,False
+Membership block only,9,9,False,False

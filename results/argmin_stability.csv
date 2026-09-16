@@ -1,4 +1,4 @@
-rasio,argmin_sampel_penuh,boot_median,boot_p5,boot_p25,boot_p75,boot_p95,rentang_p5_p95
+ratio,argmin_full_sample,boot_median,boot_p5,boot_p25,boot_p75,boot_p95,range_p5_p95
 1.0,0.48,0.51,0.46,0.48,0.54,0.63,0.17
 1.5,0.46,0.43,0.34,0.35,0.46,0.49,0.15
 2.0,0.34,0.33,0.27,0.3,0.34,0.41,0.14

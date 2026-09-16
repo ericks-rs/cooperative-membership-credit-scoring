@@ -1,7 +1,7 @@
 """Draws Fig. 1, the research design, as a compact two-column diagram.
 
-Writes figures/fig1_alur_penelitian_revised.pdf, .svg, and .png (600 dpi) in figures/. Text is set in Times New Roman from the Windows font folder, and the
-PNG is rasterised from the PDF with pdf2image, which needs poppler's pdftoppm on
+Writes fig1_research_design.pdf, .svg, and .png (600 dpi) to figures/. Text is
+set in Times New Roman from the Windows font folder, and the PNG is rasterised from the PDF with pdf2image, which needs poppler's pdftoppm on
 the PATH (on Windows, MiKTeX ships one under miktex/bin/x64).
 
 Every label is width-checked against its box at draw time, so a wording change
@@ -17,7 +17,7 @@ from reportlab.lib.units import mm
 from pdf2image import convert_from_path
 
 OUT = Path(__file__).resolve().parents[1] / "figures"
-STEM = OUT / 'fig1_alur_penelitian_revised'
+STEM = OUT / 'fig1_research_design'
 W, H = 174, 122
 pdfmetrics.registerFont(TTFont('TimesPaper', r'C:\Windows\Fonts\times.ttf'))
 pdfmetrics.registerFont(TTFont('TimesPaperBold', r'C:\Windows\Fonts\timesbd.ttf'))
@@ -120,5 +120,5 @@ STEM.with_suffix('.svg').write_text('\n'.join(svg),encoding='utf8')
 png=convert_from_path(str(STEM.with_suffix('.pdf')),dpi=600)[0]
 png.save(STEM.with_suffix('.png'),dpi=(600,600))
 preview=convert_from_path(str(STEM.with_suffix('.pdf')),dpi=170)[0]
-preview.save(OUT/'fig1_alur_penelitian_revised_preview.png')
+preview.save(OUT/'fig1_research_design_preview.png')
 print(json.dumps({'width_mm':W,'height_mm':H,'png_px':png.size,'png_dpi':600,'min_font_pt':min(x['font_pt'] for x in checks),'text_width_checks':len(checks),'outputs':[str(STEM.with_suffix(ext)) for ext in ['.png','.svg','.pdf']]},indent=2))

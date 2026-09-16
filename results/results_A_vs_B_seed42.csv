@@ -1,4 +1,4 @@
-Model,Fitur,Accuracy,Precision,Recall,F1,AUC,Brier
+Model,Features,Accuracy,Precision,Recall,F1,AUC,Brier
 Logistic Regression,A,0.7515,0.6337,0.4326,0.5142,0.7761,0.1688
 Logistic Regression,B,0.7675,0.6571,0.4918,0.5626,0.8009,0.1598
 Decision Tree,A,0.713,0.5397,0.3799,0.4459,0.6949,0.1995

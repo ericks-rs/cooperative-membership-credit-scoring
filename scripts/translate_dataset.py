@@ -1,21 +1,28 @@
-"""Writes data/dataset_en.csv, a copy of data/dataset.csv with English column names and
-English category labels, for readers who do not read Indonesian.
+"""Writes data/dataset.csv, the English version of the cooperative's extract.
 
-The analysis scripts read dataset.csv, not this copy. Nothing else changes:
-the rows are in the same order, numeric values are untouched, and the mapping
-is the one in DATA_DICTIONARY.md. Run from the repository folder:
+data/dataset_original.csv is the file as supplied, with Indonesian column names
+and category labels that match the cooperative's own information system. This
+script renames the columns and translates the labels using the mapping in
+data/DATA_DICTIONARY.md. Rows stay in the same order and numeric values are
+untouched, so the two files describe exactly the same 2,000 members.
 
-    python scripts/make_english_copy.py
+The analysis scripts read data/dataset.csv. To keep their results identical to
+a run on the original labels, they pass CATEGORY_ORDER to the one-hot encoder,
+which fixes each variable's category order to the alphabetical order of the
+original Indonesian labels. Without that, the encoder would sort the English
+labels instead, drop a different reference level, and change the fitted models.
+
+Run from anywhere:
+
+    python scripts/translate_dataset.py
 """
-
-import pandas as pd
 
 from pathlib import Path
 
+import pandas as pd
+
 ROOT = Path(__file__).resolve().parents[1]
-DATA, RESULTS, FIGURES = ROOT / "data", ROOT / "results", ROOT / "figures"
-RESULTS.mkdir(exist_ok=True)
-FIGURES.mkdir(exist_ok=True)
+DATA = ROOT / "data"
 
 COLUMNS = {
     "id_anggota": "member_id",
@@ -73,19 +80,35 @@ LABELS = {
 }
 
 
+def category_order(original: pd.DataFrame) -> dict:
+    """English labels of every categorical column, in the alphabetical order of
+    the original Indonesian labels. This is the order the analysis scripts pin."""
+    order = {}
+    for col in original.columns:
+        if original[col].dtype == object:
+            mapping = LABELS.get(col, {})
+            order[COLUMNS[col]] = [mapping.get(v, v) for v in sorted(original[col].unique())]
+    return order
+
+
 def main():
-    df = pd.read_csv(DATA / "dataset.csv")
-    missing = [c for c in df.columns if c not in COLUMNS]
+    original = pd.read_csv(DATA / "dataset_original.csv")
+    missing = [c for c in original.columns if c not in COLUMNS]
     if missing:
         raise SystemExit(f"columns without an English name: {missing}")
+    df = original.copy()
     for col, mapping in LABELS.items():
         unknown = sorted(set(df[col]) - set(mapping))
         if unknown:
             raise SystemExit(f"{col}: labels without a translation: {unknown}")
         df[col] = df[col].map(mapping)
     df = df.rename(columns=COLUMNS)
-    df.to_csv(DATA / "dataset_en.csv", index=False)
-    print(f"dataset_en.csv written, {df.shape[0]} rows, {df.shape[1]} columns")
+    df.to_csv(DATA / "dataset.csv", index=False)
+    print(f"data/dataset.csv written, {df.shape[0]} rows, {df.shape[1]} columns")
+    print("CATEGORY_ORDER = {")
+    for col, levels in category_order(original).items():
+        print(f"    {col!r}: {levels!r},")
+    print("}")
 
 
 if __name__ == "__main__":

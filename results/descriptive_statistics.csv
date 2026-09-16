@@ -1,0 +1,50 @@
+variable,type,level,n,percent,summary,default_rate
+age,numeric,,2000,,36 (31 to 43),
+number_of_dependents,numeric,,2000,,1 (0 to 2),
+monthly_income_idr,numeric,,2000,,"5,092,500 (3,384,250 to 7,125,750)",
+loan_amount_idr,numeric,,2000,,"21,693,000 (13,706,750 to 34,840,750)",
+loan_term_months,numeric,,2000,,36 (24 to 48),
+interest_rate_pct_per_year,numeric,,2000,,12 (12 to 13),
+debt_ratio,numeric,,2000,,0.222 (0.180 to 0.271),
+prior_loans,numeric,,2000,,1 (0 to 2),
+payment_lateness_months,numeric,,2000,,0 (0 to 1),
+membership_tenure_months,numeric,,2000,,39 (23 to 60),
+principal_savings_idr,numeric,,2000,,"100,000 (100,000 to 100,000)",
+mandatory_savings_idr,numeric,,2000,,"3,850,000 (1,950,000 to 7,000,000)",
+voluntary_savings_idr,numeric,,2000,,"541,000 (302,000 to 996,500)",
+transaction_activity_12m_idr,numeric,,2000,,"2,427,500 (1,192,000 to 4,577,000)",
+gender,categorical,male,986,49.3,,0.31
+gender,categorical,female,1014,50.7,,0.298
+marital_status,categorical,single,818,40.9,,0.263
+marital_status,categorical,divorced,36,1.8,,0.194
+marital_status,categorical,married,1146,57.3,,0.337
+education,categorical,diploma,348,17.4,,0.313
+education,categorical,bachelor's degree,509,25.4,,0.196
+education,categorical,master's degree,157,7.8,,0.14
+education,categorical,senior high school,986,49.3,,0.382
+occupation,categorical,laborer,176,8.8,,0.494
+occupation,categorical,teacher,170,8.5,,0.106
+occupation,categorical,private-sector employee,356,17.8,,0.239
+occupation,categorical,fisher,144,7.2,,0.444
+occupation,categorical,civil servant,219,11.0,,0.183
+occupation,categorical,trader,223,11.2,,0.3
+occupation,categorical,nurse,87,4.4,,0.161
+occupation,categorical,farmer,161,8.0,,0.429
+occupation,categorical,micro or small business owner,257,12.8,,0.385
+occupation,categorical,self-employed,207,10.4,,0.314
+city,categorical,Bandung,236,11.8,,0.305
+city,categorical,Jakarta,250,12.5,,0.304
+city,categorical,Makassar,244,12.2,,0.348
+city,categorical,Medan,268,13.4,,0.299
+city,categorical,Palembang,263,13.2,,0.259
+city,categorical,Semarang,249,12.4,,0.353
+city,categorical,Surabaya,232,11.6,,0.259
+city,categorical,Yogyakarta,258,12.9,,0.306
+membership_category,categorical,full member,1865,93.2,,0.292
+membership_category,categorical,prospective member,135,6.8,,0.467
+annual_meeting_participation,categorical,no,721,36.0,,0.343
+annual_meeting_participation,categorical,yes,1279,64.0,,0.282
+payroll_deduction,categorical,no,1218,60.9,,0.377
+payroll_deduction,categorical,yes,782,39.1,,0.191
+activity_status,categorical,active,1428,71.4,,0.279
+activity_status,categorical,inactive,572,28.6,,0.365

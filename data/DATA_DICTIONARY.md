@@ -1,9 +1,11 @@
-# Data dictionary for `dataset.csv`
+# Data dictionary
 
-Column names and category labels are in Indonesian, matching the cooperative's
-own information system. This file gives the English name used in the paper, the
-role of each column in the two feature sets, the unit, and the meaning of every
-category label. One row is one member with one loan under evaluation. The file
+`dataset.csv` uses the English column names and labels shown in the first
+column of each table below. `dataset_original.csv` is the file as supplied, with
+the Indonesian names and labels of the cooperative's information system, shown
+in the second column. The two files hold the same 2,000 records in the same
+order. This file also gives the role of each column in the two feature sets, the
+unit, and the meaning of every category label. One row is one member with one loan under evaluation. The file
 has 2,000 rows and 25 columns, no missing values, and no duplicate rows.
 
 All amounts are in Indonesian rupiah (IDR). Units for the interest rate,
@@ -12,52 +14,54 @@ with the data provider.
 
 ## Identifier and outcome
 
-| Column | English name | Type | Meaning |
+| Column in `dataset.csv` | Original name | Type | Meaning |
 |---|---|---|---|
-| `id_anggota` | member identifier | integer, 1 to 2000 | Excluded from every feature matrix |
-| `status_pinjaman` | default label | 0 or 1 | 1 = arrears of 90 days or more within the 24 months after the application (608 members). 0 = that threshold was not reached by month 24 (1,392 members). A 0 is not a record of eventual repayment. |
+| `member_id` | `id_anggota` | integer, 1 to 2000 | Excluded from every feature matrix |
+| `default` | `status_pinjaman` | 0 or 1 | 1 = arrears of 90 days or more within the 24 months after the application (608 members). 0 = that threshold was not reached by month 24 (1,392 members). A 0 is not a record of eventual repayment. |
 
 ## Model A, conventional borrower and loan variables (14)
 
-| Column | English name | Type and unit | Labels or range |
+| Column in `dataset.csv` | Original name | Type and unit | Labels or range |
 |---|---|---|---|
-| `usia` | age | integer, years | 22 to 65 |
-| `jenis_kelamin` | gender | category | `P` = female (perempuan), `L` = male (laki-laki) |
-| `status_perkawinan` | marital status | category | `Menikah` = married, `Belum Menikah` = single, `Cerai` = divorced |
-| `pendidikan` | education | category | `SMA` = senior high school, `D3` = diploma (three-year), `S1` = bachelor's degree, `S2` = master's degree |
-| `pekerjaan` | occupation | category | `Karyawan Swasta` = private-sector employee, `UMKM` = micro or small business owner, `Pedagang` = trader, `PNS` = civil servant, `Wiraswasta` = self-employed, `Buruh` = laborer, `Guru` = teacher, `Petani` = farmer, `Nelayan` = fisher, `Perawat` = nurse |
-| `kota` | city | category | `Bandung`, `Jakarta`, `Makassar`, `Medan`, `Palembang`, `Semarang`, `Surabaya`, `Yogyakarta` (removed from both feature sets in leave-one-city-out validation) |
-| `jumlah_tanggungan` | number of dependents | integer, persons | 0 to 4 |
-| `penghasilan_bulanan` | monthly income | integer, IDR | 2,501,000 to 20,897,000 |
-| `jumlah_pinjaman` | loan amount | integer, IDR | 2,894,000 to 150,000,000 |
-| `tenor_pinjaman` | loan term | integer, months | 12, 24, 36, 48, or 60 |
-| `suku_bunga` | interest rate | integer, percent per year | 10 to 15 |
-| `rasio_hutang` | debt ratio | decimal | 0.103 to 0.469, as supplied by the provider |
-| `riwayat_pinjaman` | prior-loan history | integer, number of previous loans | 0 to 6 |
-| `keterlambatan_bayar` | payment lateness | integer, months | Number of months, out of the 12 before the data were extracted, with at least one late payment, including payments on the loan under evaluation. Because the window is anchored at extraction rather than at the application, the variable may carry information from the outcome window. The paper repeats the comparison without it. |
+| `age` | `usia` | integer, years | 22 to 65 |
+| `gender` | `jenis_kelamin` | category | `female` (original `P`, perempuan), `male` (original `L`, laki-laki) |
+| `marital_status` | `status_perkawinan` | category | `married` (`Menikah`), `single` (`Belum Menikah`), `divorced` (`Cerai`) |
+| `education` | `pendidikan` | category | `senior high school` (`SMA`), `diploma` (`D3`, three-year), `bachelor's degree` (`S1`), `master's degree` (`S2`) |
+| `occupation` | `pekerjaan` | category | `private-sector employee` (`Karyawan Swasta`), `micro or small business owner` (`UMKM`), `trader` (`Pedagang`), `civil servant` (`PNS`), `self-employed` (`Wiraswasta`), `laborer` (`Buruh`), `teacher` (`Guru`), `farmer` (`Petani`), `fisher` (`Nelayan`), `nurse` (`Perawat`) |
+| `city` | `kota` | category | `Bandung`, `Jakarta`, `Makassar`, `Medan`, `Palembang`, `Semarang`, `Surabaya`, `Yogyakarta` (removed from both feature sets in leave-one-city-out validation) |
+| `number_of_dependents` | `jumlah_tanggungan` | integer, persons | 0 to 4 |
+| `monthly_income_idr` | `penghasilan_bulanan` | integer, IDR | 2,501,000 to 20,897,000 |
+| `loan_amount_idr` | `jumlah_pinjaman` | integer, IDR | 2,894,000 to 150,000,000 |
+| `loan_term_months` | `tenor_pinjaman` | integer, months | 12, 24, 36, 48, or 60 |
+| `interest_rate_pct_per_year` | `suku_bunga` | integer, percent per year | 10 to 15 |
+| `debt_ratio` | `rasio_hutang` | decimal | 0.103 to 0.469, as supplied by the provider |
+| `prior_loans` | `riwayat_pinjaman` | integer, number of previous loans | 0 to 6 |
+| `payment_lateness_months` | `keterlambatan_bayar` | integer, months | Number of months, out of the 12 before the data were extracted, with at least one late payment, including payments on the loan under evaluation. Because the window is anchored at extraction rather than at the application, the variable may carry information from the outcome window. The paper repeats the comparison without it. |
 
 ## Membership variables added in Model B (9)
 
-| Column | English name | Type and unit | Labels or range |
+| Column in `dataset.csv` | Original name | Type and unit | Labels or range |
 |---|---|---|---|
-| `lama_keanggotaan` | membership tenure | integer, months | 3 to 179 |
-| `simpanan_pokok` | principal savings | integer, IDR | 25,000, 50,000, 75,000, or 100,000 (one-off deposit paid on joining) |
-| `simpanan_wajib` | mandatory savings | integer, IDR | 150,000 to 35,800,000 (accumulated balance) |
-| `simpanan_sukarela` | voluntary savings | integer, IDR | 100,000 to 13,617,000 (balance) |
-| `jenis_anggota` | membership category | category | `Biasa` = full member, `Calon` = prospective member |
-| `partisipasi_rat` | participation in the annual member meeting | category | `Ya` = attended, `Tidak` = did not attend (RAT = rapat anggota tahunan, the annual member meeting) |
-| `sistem_potong_gaji` | payroll deduction | category | `Ya` = installments deducted from payroll, `Tidak` = not deducted |
-| `status_keaktifan` | activity status | category | `Aktif` = active, `Pasif` = inactive |
-| `transaksi_koperasi` | transaction activity with the cooperative | integer, IDR | 0 to 45,340,000, value of transactions with the cooperative during the 12 months before extraction |
+| `membership_tenure_months` | `lama_keanggotaan` | integer, months | 3 to 179 |
+| `principal_savings_idr` | `simpanan_pokok` | integer, IDR | 25,000, 50,000, 75,000, or 100,000 (one-off deposit paid on joining) |
+| `mandatory_savings_idr` | `simpanan_wajib` | integer, IDR | 150,000 to 35,800,000 (accumulated balance) |
+| `voluntary_savings_idr` | `simpanan_sukarela` | integer, IDR | 100,000 to 13,617,000 (balance) |
+| `membership_category` | `jenis_anggota` | category | `full member` (`Biasa`), `prospective member` (`Calon`) |
+| `annual_meeting_participation` | `partisipasi_rat` | category | `yes` = attended, `no` = did not attend (original `Ya`/`Tidak`; RAT = rapat anggota tahunan, the annual member meeting) |
+| `payroll_deduction` | `sistem_potong_gaji` | category | `yes` = installments deducted from payroll, `no` = not deducted (original `Ya`/`Tidak`) |
+| `activity_status` | `status_keaktifan` | category | `active` (`Aktif`), `inactive` (`Pasif`) |
+| `transaction_activity_12m_idr` | `transaksi_koperasi` | integer, IDR | 0 to 45,340,000, value of transactions with the cooperative during the 12 months before extraction |
 
 ## Notes for reuse
 
-- The feature lists are hard-coded in `eksperimen_koperasi.py` as `FIT_A` (the 14
-  Model A columns) and `FIT_KOP` (the 9 membership columns). Model B is
-  `FIT_A + FIT_KOP`.
+- The feature lists are hard-coded in `scripts/main_experiment.py` as
+  `FEATURES_A` (the 14 Model A columns) and `FEATURES_MEMBERSHIP` (the 9
+  membership columns). Model B is `FEATURES_A + FEATURES_MEMBERSHIP`.
+- The one-hot encoder is given `CATEGORY_ORDER`, the category order of the
+  original Indonesian labels, so results on `dataset.csv` are identical to
+  results on `dataset_original.csv`.
 - Categorical columns are one-hot encoded with one level omitted, and numeric
   columns are standardised, both fitted inside each training fold.
-- Group labels in `keadilan_kelompok.csv` use the Indonesian labels above
-  (`jenis_kelamin` `P`/`L`, `status_perkawinan`, `pendidikan`). Table 6 in the
-  paper reports the same rows with the English labels and as percentages.
+- Table 6 in the paper reports the rows of `results/group_differences.csv` as
+  percentages with one decimal.
 - The extract is cross-sectional and carries no calendar dates.

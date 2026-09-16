@@ -1,0 +1,41 @@
+feature,coefficient,abs,block
+occupation_teacher,-1.139,1.139,conventional
+occupation_nurse,-0.8124,0.8124,conventional
+debt_ratio,0.7985,0.7985,conventional
+membership_category_prospective member,0.7722,0.7722,membership
+payroll_deduction_yes,-0.6673,0.6673,membership
+number_of_dependents,0.5402,0.5402,conventional
+occupation_civil servant,-0.5041,0.5041,conventional
+city_Palembang,-0.4274,0.4274,conventional
+payment_lateness_months,0.4059,0.4059,conventional
+occupation_trader,-0.3674,0.3674,conventional
+education_master's degree,-0.3405,0.3405,conventional
+membership_tenure_months,-0.3074,0.3074,membership
+occupation_private-sector employee,-0.3053,0.3053,conventional
+education_senior high school,0.2737,0.2737,conventional
+voluntary_savings_idr,-0.2737,0.2737,membership
+activity_status_inactive,0.2664,0.2664,membership
+occupation_fisher,-0.2539,0.2539,conventional
+education_bachelor's degree,-0.2518,0.2518,conventional
+city_Medan,-0.2514,0.2514,conventional
+monthly_income_idr,-0.2493,0.2493,conventional
+occupation_micro or small business owner,-0.2318,0.2318,conventional
+interest_rate_pct_per_year,0.2262,0.2262,conventional
+age,-0.2186,0.2186,conventional
+city_Makassar,0.1822,0.1822,conventional
+occupation_farmer,-0.1685,0.1685,conventional
+mandatory_savings_idr,-0.1544,0.1544,membership
+city_Surabaya,-0.1536,0.1536,conventional
+annual_meeting_participation_yes,-0.1518,0.1518,membership
+city_Jakarta,0.1299,0.1299,conventional
+city_Semarang,0.1227,0.1227,conventional
+marital_status_divorced,0.1091,0.1091,conventional
+gender_female,-0.1023,0.1023,conventional
+prior_loans,-0.0799,0.0799,conventional
+loan_amount_idr,0.0797,0.0797,conventional
+marital_status_married,-0.0659,0.0659,conventional
+occupation_self-employed,0.0473,0.0473,conventional
+city_Yogyakarta,-0.0425,0.0425,conventional
+loan_term_months,-0.0378,0.0378,conventional
+transaction_activity_12m_idr,-0.0237,0.0237,membership
+principal_savings_idr,-0.0194,0.0194,membership

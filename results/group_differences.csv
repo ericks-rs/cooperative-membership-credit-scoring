@@ -1,0 +1,10 @@
+attribute,group,n,default_rate,flagged_A,recall_A,FPR_A,flagged_B,recall_B,FPR_B
+gender,female,1014,0.298,0.404,0.679,0.288,0.398,0.682,0.278
+gender,male,986,0.31,0.444,0.748,0.307,0.423,0.761,0.271
+marital_status,single,818,0.263,0.355,0.586,0.272,0.341,0.651,0.231
+marital_status,married,1146,0.337,0.481,0.79,0.324,0.467,0.764,0.316
+marital_status,divorced,36,0.194,0.194,0.429,0.138,0.194,0.571,0.103
+education,senior high school,986,0.382,0.573,0.775,0.448,0.54,0.777,0.392
+education,bachelor's degree,509,0.196,0.212,0.53,0.134,0.222,0.57,0.137
+education,diploma,348,0.313,0.451,0.771,0.305,0.437,0.761,0.289
+education,master's degree,157,0.14,0.115,0.227,0.096,0.153,0.273,0.133

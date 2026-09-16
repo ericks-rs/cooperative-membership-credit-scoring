@@ -1,4 +1,4 @@
-Model,kota,n_uji,AUC_A,AUC_B,selisih
+Model,city,n_test,AUC_A,AUC_B,diff
 Logistic Regression,Bandung,236,0.8122,0.8574,0.0451
 Logistic Regression,Jakarta,250,0.7873,0.8224,0.0352
 Logistic Regression,Makassar,244,0.7005,0.7329,0.0324

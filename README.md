@@ -21,15 +21,15 @@ they can be run from anywhere.
 
 | Path | What it is |
 |---|---|
-| `data/dataset.csv` | 2,000 de-identified member records, 25 columns |
-| `data/DATA_DICTIONARY.md` | English name, unit, and category labels for every column |
-| `data/dataset_en.csv` | The same records with English column names and labels, for reading only |
-| `scripts/eksperimen_koperasi.py` | Main experiment |
-| `scripts/eksperimen_lanjutan.py` | Inference and the four robustness analyses |
-| `scripts/gambar_ulang.py` | Redraws the three source figures at 600 dpi |
-| `scripts/create_fig1_revised.py` | Draws Fig. 1, the research design, as PDF, SVG, and 600 dpi PNG |
-| `scripts/gambar_dua_panel.py` | Places the ROC and calibration panels side by side for Fig. 2 |
-| `scripts/make_english_copy.py` | Writes `data/dataset_en.csv` from `data/dataset.csv` using the dictionary |
+| `data/dataset.csv` | 2,000 de-identified member records, 25 columns, English names and labels. The file the scripts read |
+| `data/dataset_original.csv` | The same records as supplied, with the Indonesian names and labels of the cooperative's information system |
+| `data/DATA_DICTIONARY.md` | Every column: English name, original name, unit, and the meaning of each category label |
+| `scripts/translate_dataset.py` | Writes `data/dataset.csv` from `data/dataset_original.csv` |
+| `scripts/main_experiment.py` | Main experiment |
+| `scripts/inference_and_checks.py` | Inference and the additional analyses |
+| `scripts/redraw_figures.py` | Redraws the three source figures at 600 dpi |
+| `scripts/draw_fig1.py` | Draws Fig. 1, the research design, as PDF, SVG, and 600 dpi PNG |
+| `scripts/compose_fig2.py` | Places the ROC and calibration panels side by side for Fig. 2 |
 | `results/*.csv` | Every result file the two experiment scripts write |
 | `figures/` | Every figure, plus the PDF and SVG of Fig. 1 |
 | `requirements.txt` | Pinned versions |
@@ -39,15 +39,16 @@ they can be run from anywhere.
 ```
 python -m venv .venv
 .venv\Scripts\python.exe -m pip install -r requirements.txt
-.venv\Scripts\python.exe scripts\eksperimen_koperasi.py
-.venv\Scripts\python.exe scripts\eksperimen_lanjutan.py
-.venv\Scripts\python.exe scripts\gambar_ulang.py
-.venv\Scripts\python.exe scripts\create_fig1_revised.py
-.venv\Scripts\python.exe scripts\gambar_dua_panel.py
+.venv\Scripts\python.exe scripts\translate_dataset.py
+.venv\Scripts\python.exe scripts\main_experiment.py
+.venv\Scripts\python.exe scripts\inference_and_checks.py
+.venv\Scripts\python.exe scripts\redraw_figures.py
+.venv\Scripts\python.exe scripts\draw_fig1.py
+.venv\Scripts\python.exe scripts\compose_fig2.py
 ```
 
 Run the main script first. Before doing anything of its own,
-`eksperimen_lanjutan.py` reloads `results/tabel2_rerata5seed.csv` and recomputes the AUC
+`inference_and_checks.py` reloads `results/mean_over_five_seeds.csv` and recomputes the AUC
 for logistic regression and gradient boosting under both feature sets, exiting if
 any value differs from the stored one. The second script carries its own copy of
 the fitting helpers, and that guard is what keeps the copy from drifting away
@@ -55,13 +56,15 @@ from the main script.
 
 The two experiment scripts take about 3.5 and 10.5 minutes respectively on an
 ordinary laptop. The three figure scripts finish in seconds.
-`create_fig1_revised.py` reads Times New Roman from the Windows font folder and
-needs poppler's `pdftoppm` on the PATH to rasterise the PNG.
+`draw_fig1.py` reads Times New Roman from the Windows font folder and needs
+poppler's `pdftoppm` on the PATH to rasterise the PNG.
 
 This has been checked rather than assumed. The whole repository was copied to an
-empty folder, `results/` and `figures/` were emptied, the five scripts were run
-in the order above, and each output was compared byte for byte against the
-committed version. All 22 CSV files and all figure files matched.
+empty folder, `results/`, `figures/`, and `data/dataset.csv` were deleted, the
+six scripts were run in the order above, and each output was compared against
+the committed version. All 22 CSV
+files matched byte for byte and every PNG matched pixel for pixel. Only the PDF
+of Fig. 1 differs between runs, in its embedded creation timestamp.
 
 The versions in `requirements.txt` are pinned, and matching them matters. The
 reported numbers come back exactly under those versions, and the figures come
@@ -77,16 +80,16 @@ Result files are in `results/`, figures in `figures/`, scripts in `scripts/`.
 
 | Paper | Result file | Written by |
 |---|---|---|
-| Table 1 | `tabel2_rerata5seed.csv` | `eksperimen_koperasi.py` |
-| Table 2 | `inferensi_delta_auc.csv` | `eksperimen_lanjutan.py` |
-| Table 3 | `kalibrasi_detail.csv` | `eksperimen_koperasi.py` |
-| Table 4 | `sapuan_ambang.csv` | `eksperimen_koperasi.py` |
-| Table 5 | `smote_vs_tanpa.csv` | `eksperimen_koperasi.py` |
-| Table 6 | `keadilan_kelompok.csv` | `eksperimen_koperasi.py` |
-| Fig. 1 | `fig1_alur_penelitian_revised.png` | `create_fig1_revised.py` |
-| Fig. 2 | `fig2_roc_kalibrasi.png` | `gambar_dua_panel.py` |
+| Table 1 | `mean_over_five_seeds.csv` | `main_experiment.py` |
+| Table 2 | `auc_difference_inference.csv` | `inference_and_checks.py` |
+| Table 3 | `calibration_detail.csv` | `main_experiment.py` |
+| Table 4 | `threshold_sweep.csv` | `main_experiment.py` |
+| Table 5 | `smote_vs_none.csv` | `main_experiment.py` |
+| Table 6 | `group_differences.csv` | `main_experiment.py` |
+| Fig. 1 | `fig1_research_design.png` | `draw_fig1.py` |
+| Fig. 2 | `fig2_roc_calibration.png` | `compose_fig2.py` |
 
-Table 6 in the paper prints the rates in `keadilan_kelompok.csv` as percentages
+Table 6 in the paper prints the rates in `group_differences.csv` as percentages
 with one decimal, so 0.298 in the file appears as 29.8 in the table.
 
 The remaining CSV files support statements made in the text rather than a
@@ -98,15 +101,22 @@ surface, and the stability of the cost-minimising threshold.
 ## The data
 
 One row is one member with one loan under evaluation. The file has 2,000 rows,
-23 explanatory variables, the outcome `status_pinjaman`, and `id_anggota`, which
-is excluded from every feature matrix. There are no missing values and no
+23 explanatory variables, the outcome `default`, and `member_id`, which is
+excluded from every feature matrix. There are no missing values and no
 duplicate rows.
 
-Column names and category labels are in Indonesian, matching the cooperative's
-own information system. `DATA_DICTIONARY.md` maps every column to the English
-name used in the paper, states the unit, and translates every category label.
-`dataset_en.csv` is the same file with those English names and labels applied,
-written by `make_english_copy.py`. The analysis scripts read `dataset.csv`.
+`data/dataset_original.csv` is the file as supplied, with Indonesian column
+names and category labels that match the cooperative's own information system.
+`data/dataset.csv` is the same file with English names and labels, written by
+`scripts/translate_dataset.py`, and is what the analysis scripts read.
+`data/DATA_DICTIONARY.md` lists every column with both names, the unit, and the
+meaning of each label.
+
+Translating the labels does not change any result. The one-hot encoder in the
+scripts is given the category order of the original Indonesian labels, so the
+reference level and the column layout of every model are the same as in a run
+on the original file. This was checked by running the whole pipeline on both
+files and comparing every result cell.
 
 The records come from a savings and credit cooperative in Indonesia, supplied
 through a provider of cooperative financial system applications. The provider
@@ -118,13 +128,13 @@ this file.
 
 Two definitions matter for anyone reusing the data.
 
-`status_pinjaman` is 1 when arrears reached 90 days or more within the 24-month
+`default` is 1 when arrears reached 90 days or more within the 24-month
 performance window following the application. It is not a record of eventual
 repayment. Of the 2,000 loans, 1,001 had scheduled terms longer than 24 months,
 and the file carries no settlement dates, so a 0 means only that the member had
 not reached 90 days of arrears by month 24.
 
-`keterlambatan_bayar` counts the months, out of the 12 before the data were
+`payment_lateness_months` counts the months, out of the 12 before the data were
 extracted, in which the member was late at least once, including the loan under
 evaluation. Because the window is anchored at extraction rather than at the
 application, the variable may carry information from the outcome window. The

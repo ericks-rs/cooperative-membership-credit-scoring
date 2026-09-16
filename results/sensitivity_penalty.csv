@@ -1,0 +1,41 @@
+feature,coef_C1,coef_no_penalty,shrinkage_pct,type
+occupation_teacher,-1.139,-1.4052,18.9,dummy
+occupation_nurse,-0.8124,-1.0698,24.1,dummy
+debt_ratio,0.7985,0.8056,0.9,numeric
+membership_category_prospective member,0.7722,0.8687,11.1,dummy
+payroll_deduction_yes,-0.6673,-0.6274,-6.4,dummy
+number_of_dependents,0.5402,0.5508,1.9,numeric
+occupation_civil servant,-0.5041,-0.726,30.6,dummy
+city_Palembang,-0.4274,-0.4369,2.2,dummy
+payment_lateness_months,0.4059,0.4104,1.1,numeric
+occupation_trader,-0.3674,-0.5352,31.4,dummy
+education_master's degree,-0.3405,-0.397,14.2,dummy
+membership_tenure_months,-0.3074,-0.3174,3.2,numeric
+occupation_private-sector employee,-0.3053,-0.4953,38.4,dummy
+education_senior high school,0.2737,0.2728,-0.4,dummy
+voluntary_savings_idr,-0.2737,-0.2764,0.9,numeric
+activity_status_inactive,0.2664,0.273,2.4,dummy
+occupation_fisher,-0.2539,-0.3796,33.1,dummy
+education_bachelor's degree,-0.2518,-0.273,7.8,dummy
+city_Medan,-0.2514,-0.2678,6.1,dummy
+monthly_income_idr,-0.2493,-0.2243,-11.2,numeric
+occupation_micro or small business owner,-0.2318,-0.3648,36.5,dummy
+interest_rate_pct_per_year,0.2262,0.2208,-2.5,numeric
+age,-0.2186,-0.2259,3.2,numeric
+city_Makassar,0.1822,0.1834,0.6,dummy
+occupation_farmer,-0.1685,-0.2904,42.0,dummy
+mandatory_savings_idr,-0.1544,-0.1419,-8.8,numeric
+city_Surabaya,-0.1536,-0.1672,8.1,dummy
+annual_meeting_participation_yes,-0.1518,-0.155,2.1,dummy
+city_Jakarta,0.1299,0.1165,-11.5,dummy
+city_Semarang,0.1227,0.1304,5.9,dummy
+marital_status_divorced,0.1091,0.1171,6.8,dummy
+gender_female,-0.1023,-0.1045,2.1,dummy
+prior_loans,-0.0799,-0.0798,-0.0,numeric
+loan_amount_idr,0.0797,0.0879,9.3,numeric
+marital_status_married,-0.0659,-0.0809,18.5,dummy
+occupation_self-employed,0.0473,-0.1235,61.7,dummy
+city_Yogyakarta,-0.0425,-0.0455,6.5,dummy
+loan_term_months,-0.0378,-0.0379,0.4,numeric
+transaction_activity_12m_idr,-0.0237,-0.0185,-28.1,numeric
+principal_savings_idr,-0.0194,-0.0022,-796.6,numeric
