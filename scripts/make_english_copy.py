@@ -1,14 +1,21 @@
-"""Writes dataset_en.csv, a copy of dataset.csv with English column names and
+"""Writes data/dataset_en.csv, a copy of data/dataset.csv with English column names and
 English category labels, for readers who do not read Indonesian.
 
 The analysis scripts read dataset.csv, not this copy. Nothing else changes:
 the rows are in the same order, numeric values are untouched, and the mapping
 is the one in DATA_DICTIONARY.md. Run from the repository folder:
 
-    python make_english_copy.py
+    python scripts/make_english_copy.py
 """
 
 import pandas as pd
+
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+DATA, RESULTS, FIGURES = ROOT / "data", ROOT / "results", ROOT / "figures"
+RESULTS.mkdir(exist_ok=True)
+FIGURES.mkdir(exist_ok=True)
 
 COLUMNS = {
     "id_anggota": "member_id",
@@ -67,7 +74,7 @@ LABELS = {
 
 
 def main():
-    df = pd.read_csv("dataset.csv")
+    df = pd.read_csv(DATA / "dataset.csv")
     missing = [c for c in df.columns if c not in COLUMNS]
     if missing:
         raise SystemExit(f"columns without an English name: {missing}")
@@ -77,7 +84,7 @@ def main():
             raise SystemExit(f"{col}: labels without a translation: {unknown}")
         df[col] = df[col].map(mapping)
     df = df.rename(columns=COLUMNS)
-    df.to_csv("dataset_en.csv", index=False)
+    df.to_csv(DATA / "dataset_en.csv", index=False)
     print(f"dataset_en.csv written, {df.shape[0]} rows, {df.shape[1]} columns")
 
 

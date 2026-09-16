@@ -1,7 +1,6 @@
 """Draws Fig. 1, the research design, as a compact two-column diagram.
 
-Writes fig1_alur_penelitian_revised.pdf, .svg, and .png (600 dpi) in the working
-directory. Text is set in Times New Roman from the Windows font folder, and the
+Writes figures/fig1_alur_penelitian_revised.pdf, .svg, and .png (600 dpi) in figures/. Text is set in Times New Roman from the Windows font folder, and the
 PNG is rasterised from the PDF with pdf2image, which needs poppler's pdftoppm on
 the PATH (on Windows, MiKTeX ships one under miktex/bin/x64).
 
@@ -17,7 +16,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.units import mm
 from pdf2image import convert_from_path
 
-OUT = Path.cwd()
+OUT = Path(__file__).resolve().parents[1] / "figures"
 STEM = OUT / 'fig1_alur_penelitian_revised'
 W, H = 174, 122
 pdfmetrics.registerFont(TTFont('TimesPaper', r'C:\Windows\Fonts\times.ttf'))

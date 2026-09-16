@@ -35,9 +35,16 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+DATA, RESULTS, FIGURES = ROOT / "data", ROOT / "results", ROOT / "figures"
+RESULTS.mkdir(exist_ok=True)
+FIGURES.mkdir(exist_ok=True)
+
 matplotlib.use("Agg")
 
-BERKAS = "dataset.csv"
+BERKAS = DATA / "dataset.csv"
 SEED_UTAMA = 42
 SEEDS = [42, 1, 7, 13, 99]
 AMBANG_OPERASI = 0.30
@@ -203,7 +210,7 @@ print(garis)
 print("0. PENJAGA PARITY  (salinan helper diuji terhadap CSV tersimpan)")
 print(garis)
 try:
-    t2 = pd.read_csv("tabel2_rerata5seed.csv")
+    t2 = pd.read_csv(RESULTS / "tabel2_rerata5seed.csv")
 except FileNotFoundError:
     sys.exit("tabel2_rerata5seed.csv tidak ditemukan. Jalankan eksperimen_koperasi.py dulu.")
 
@@ -272,7 +279,7 @@ id_auc = auc_cepat(y, raw["id_anggota"].values)
 korelasi = float(np.corrcoef(raw["id_anggota"].values, y)[0, 1])
 print(f"\n  AUC univariat id_anggota      : {id_auc:.4f}  (0.5 = tanpa informasi)")
 print(f"  korelasi id_anggota dengan y  : {korelasi:+.4f}")
-pd.DataFrame(baris_audit).to_csv("audit_id_anggota.csv", index=False)
+pd.DataFrame(baris_audit).to_csv(RESULTS / "audit_id_anggota.csv", index=False)
 if any(b["id_di_matriks_terlatih"] for b in baris_audit):
     sys.exit("KEBOCORAN: id_anggota masuk matriks fitur. Hentikan dan perbaiki.")
 print("  vonis: id_anggota tidak pernah masuk matriks fitur di jalur mana pun.")
@@ -330,7 +337,7 @@ for nama_model in MODEL:
         f"{'LOLOS' if lolos else 'TIDAK LOLOS'}"
     )
 inf = pd.DataFrame(baris_inf)
-inf.to_csv("inferensi_delta_auc.csv", index=False)
+inf.to_csv(RESULTS / "inferensi_delta_auc.csv", index=False)
 
 print("\n" + garis)
 print("3. UJI PERMUTASI: PENEGASAN ALGORITMA DAN REPLIKASI MODEL KEDUA")
@@ -389,7 +396,7 @@ for nama_model, n_perm in [
         f"nol {hasil['nol_rerata']:+.5f} sd {hasil['nol_sd']:.5f}  "
         f"{hasil['deviasi_sd']:.2f} SD  p={hasil['p_empiris']:.5f}"
     )
-pd.DataFrame(baris_perm).to_csv("permutasi_dua_model.csv", index=False)
+pd.DataFrame(baris_perm).to_csv(RESULTS / "permutasi_dua_model.csv", index=False)
 
 print("\n" + garis)
 print("4. MODEL BLOK KEANGGOTAAN SAJA  (EKSPLORATORI)")
@@ -425,7 +432,7 @@ for nama_model in MODEL:
         f"  {nama_model:<20} keanggotaan saja {auc_M.mean():.4f} "
         f"IK95 [{lo:.4f}, {hi:.4f}] | A {auc_A.mean():.4f} | B {auc_B.mean():.4f}"
     )
-pd.DataFrame(baris_kop).to_csv("model_keanggotaan_saja.csv", index=False)
+pd.DataFrame(baris_kop).to_csv(RESULTS / "model_keanggotaan_saja.csv", index=False)
 
 print("\n" + garis)
 print("5. BENTUK PERMUKAAN BIAYA DAN KESTABILAN AMBANG OPTIMAL")
@@ -481,7 +488,7 @@ for rasio in RASIO:
             )
         )
 pb = pd.DataFrame(baris_biaya)
-pb.to_csv("permukaan_biaya.csv", index=False)
+pb.to_csv(RESULTS / "permukaan_biaya.csv", index=False)
 print(pb[pb.Fitur == "B"].to_string(index=False))
 
 # Sebaran argmin di bawah bootstrap anggota. Kalau permukaannya datar, argmin
@@ -515,7 +522,7 @@ for rasio in RASIO:
         f"bootstrap median {q[2]:.2f}  p5-p95 [{q[0]:.2f}, {q[4]:.2f}]  "
         f"lebar {q[4] - q[0]:.2f}"
     )
-pd.DataFrame(baris_stab).to_csv("stabilitas_argmin.csv", index=False)
+pd.DataFrame(baris_stab).to_csv(RESULTS / "stabilitas_argmin.csv", index=False)
 
 fig, ax = plt.subplots(figsize=(6.0, 4.4))
 for rasio in [1, 2, 3, 5, 10]:
@@ -536,7 +543,7 @@ ax.set_ylim(0.98, 1.6)
 ax.legend(fontsize=8)
 ax.grid(alpha=0.3)
 fig.tight_layout()
-fig.savefig("gambar_permukaan_biaya.png", dpi=600)
+fig.savefig(FIGURES / "gambar_permukaan_biaya.png", dpi=600)
 print("  gambar_permukaan_biaya.png tersimpan")
 
 print("\n" + garis)
@@ -584,7 +591,7 @@ for c in FIT_B:
 uni = pd.DataFrame(baris_uni).sort_values(
     "auc_model_satu_peubah", ascending=False, kind="mergesort"
 )
-uni.to_csv("auc_univariat.csv", index=False)
+uni.to_csv(RESULTS / "auc_univariat.csv", index=False)
 print(uni.to_string(index=False))
 
 print("\n  VERIFIKASI TIGA ANGKA YANG SUDAH DIKUTIP NASKAH:")

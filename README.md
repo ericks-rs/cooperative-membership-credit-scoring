@@ -16,22 +16,22 @@ supplied data file. Nothing was typed in by hand.
 
 ## What is in this repository
 
-Layout is flat, because the scripts read `dataset.csv` and write their outputs in
-the working directory.
+Four folders. The scripts locate the others relative to their own location, so
+they can be run from anywhere.
 
-| File | What it is |
+| Path | What it is |
 |---|---|
-| `dataset.csv` | 2,000 de-identified member records, 25 columns |
-| `DATA_DICTIONARY.md` | English name, unit, and category labels for every column |
-| `dataset_en.csv` | The same records with English column names and labels, for reading only |
-| `make_english_copy.py` | Writes `dataset_en.csv` from `dataset.csv` using the dictionary |
-| `eksperimen_koperasi.py` | Main experiment |
-| `eksperimen_lanjutan.py` | Inference and the four robustness analyses |
-| `gambar_ulang.py` | Redraws the three source figures at 600 dpi |
-| `create_fig1_revised.py` | Draws Fig. 1, the research design, as PDF, SVG, and 600 dpi PNG |
-| `gambar_dua_panel.py` | Places the ROC and calibration panels side by side for Fig. 2 |
-| `*.csv` | Every result file the two experiment scripts write |
-| `*.png` | Every figure, plus the PDF and SVG of Fig. 1 |
+| `data/dataset.csv` | 2,000 de-identified member records, 25 columns |
+| `data/DATA_DICTIONARY.md` | English name, unit, and category labels for every column |
+| `data/dataset_en.csv` | The same records with English column names and labels, for reading only |
+| `scripts/eksperimen_koperasi.py` | Main experiment |
+| `scripts/eksperimen_lanjutan.py` | Inference and the four robustness analyses |
+| `scripts/gambar_ulang.py` | Redraws the three source figures at 600 dpi |
+| `scripts/create_fig1_revised.py` | Draws Fig. 1, the research design, as PDF, SVG, and 600 dpi PNG |
+| `scripts/gambar_dua_panel.py` | Places the ROC and calibration panels side by side for Fig. 2 |
+| `scripts/make_english_copy.py` | Writes `data/dataset_en.csv` from `data/dataset.csv` using the dictionary |
+| `results/*.csv` | Every result file the two experiment scripts write |
+| `figures/` | Every figure, plus the PDF and SVG of Fig. 1 |
 | `requirements.txt` | Pinned versions |
 
 ## Reproducing the paper
@@ -39,15 +39,15 @@ the working directory.
 ```
 python -m venv .venv
 .venv\Scripts\python.exe -m pip install -r requirements.txt
-.venv\Scripts\python.exe eksperimen_koperasi.py
-.venv\Scripts\python.exe eksperimen_lanjutan.py
-.venv\Scripts\python.exe gambar_ulang.py
-.venv\Scripts\python.exe create_fig1_revised.py
-.venv\Scripts\python.exe gambar_dua_panel.py
+.venv\Scripts\python.exe scripts\eksperimen_koperasi.py
+.venv\Scripts\python.exe scripts\eksperimen_lanjutan.py
+.venv\Scripts\python.exe scripts\gambar_ulang.py
+.venv\Scripts\python.exe scripts\create_fig1_revised.py
+.venv\Scripts\python.exe scripts\gambar_dua_panel.py
 ```
 
 Run the main script first. Before doing anything of its own,
-`eksperimen_lanjutan.py` reloads `tabel2_rerata5seed.csv` and recomputes the AUC
+`eksperimen_lanjutan.py` reloads `results/tabel2_rerata5seed.csv` and recomputes the AUC
 for logistic regression and gradient boosting under both feature sets, exiting if
 any value differs from the stored one. The second script carries its own copy of
 the fitting helpers, and that guard is what keeps the copy from drifting away
@@ -59,11 +59,9 @@ ordinary laptop. The three figure scripts finish in seconds.
 needs poppler's `pdftoppm` on the PATH to rasterise the PNG.
 
 This has been checked rather than assumed. The whole repository was copied to an
-empty folder, every output was deleted, the five scripts were run in the order
-above, and each result file was compared cell by cell against the version used in
-the paper. All 22 CSV files matched, and the figure files were identical pixel
-for pixel. The two-column Fig. 1 was added later and checked the same way, from
-an empty folder, and the PNG matched the one in the manuscript byte for byte.
+empty folder, `results/` and `figures/` were emptied, the five scripts were run
+in the order above, and each output was compared byte for byte against the
+committed version. All 22 CSV files and all figure files matched.
 
 The versions in `requirements.txt` are pinned, and matching them matters. The
 reported numbers come back exactly under those versions, and the figures come
@@ -74,6 +72,8 @@ Brier score in Table 1 reproduced exactly for all five algorithms and both
 feature sets.
 
 ## Which script produces which table and figure
+
+Result files are in `results/`, figures in `figures/`, scripts in `scripts/`.
 
 | Paper | Result file | Written by |
 |---|---|---|

@@ -25,6 +25,13 @@ from sklearn.model_selection import StratifiedKFold
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+DATA, RESULTS, FIGURES = ROOT / "data", ROOT / "results", ROOT / "figures"
+RESULTS.mkdir(exist_ok=True)
+FIGURES.mkdir(exist_ok=True)
+
 matplotlib.use("Agg")
 
 DPI = 600
@@ -32,7 +39,7 @@ SEED_UTAMA = 42
 AMBANG_OPERASI = 0.30
 TOLERANSI = 0.01
 
-raw = pd.read_csv("dataset.csv")
+raw = pd.read_csv(DATA / "dataset.csv")
 df = raw.drop(columns=["id_anggota"])
 y = df.pop("status_pinjaman").values
 
@@ -108,7 +115,7 @@ ax.set_ylabel("True positive rate")
 ax.legend(loc="lower right")
 ax.grid(alpha=0.3)
 fig.tight_layout()
-fig.savefig("gambar_roc.png", dpi=DPI)
+fig.savefig(FIGURES / "gambar_roc.png", dpi=DPI)
 plt.close(fig)
 
 # ---------------------------------------------------------- Fig. 2 kalibrasi
@@ -122,7 +129,7 @@ ax.set_ylabel("Observed default rate")
 ax.legend()
 ax.grid(alpha=0.3)
 fig.tight_layout()
-fig.savefig("gambar_kalibrasi.png", dpi=DPI)
+fig.savefig(FIGURES / "gambar_kalibrasi.png", dpi=DPI)
 plt.close(fig)
 
 # ------------------------------------------------------ Fig. 3 permukaan biaya
@@ -151,7 +158,7 @@ ax.set_ylim(0.98, 1.6)
 ax.legend(fontsize=8)
 ax.grid(alpha=0.3)
 fig.tight_layout()
-fig.savefig("gambar_permukaan_biaya.png", dpi=DPI)
+fig.savefig(FIGURES / "gambar_permukaan_biaya.png", dpi=DPI)
 plt.close(fig)
 
 print(f"Tiga gambar tersimpan ulang pada {DPI} DPI.")

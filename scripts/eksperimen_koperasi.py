@@ -43,9 +43,16 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+DATA, RESULTS, FIGURES = ROOT / "data", ROOT / "results", ROOT / "figures"
+RESULTS.mkdir(exist_ok=True)
+FIGURES.mkdir(exist_ok=True)
+
 matplotlib.use("Agg")
 
-BERKAS = "dataset.csv"
+BERKAS = DATA / "dataset.csv"
 SEED_UTAMA = 42
 SEEDS = [42, 1, 7, 13, 99]
 AMBANG_OPERASI = 0.30
@@ -230,7 +237,7 @@ for c in KAT_DESK:
             )
         )
 t0 = pd.DataFrame(rows)
-t0.to_csv("tabel1_deskriptif.csv", index=False)
+t0.to_csv(RESULTS / "tabel1_deskriptif.csv", index=False)
 print(t0.to_string(index=False))
 print()
 print(
@@ -249,7 +256,7 @@ for nama_model, make_model in MODEL.items():
             dict(Model=nama_model, Fitur=tag, **{k: round(v, 4) for k, v in m.items()})
         )
 t1 = pd.DataFrame(rows)
-t1.to_csv("hasil_A_vs_B.csv", index=False)
+t1.to_csv(RESULTS / "hasil_A_vs_B.csv", index=False)
 print(t1.to_string(index=False))
 
 print("\n" + "=" * 60)
@@ -274,7 +281,7 @@ for nama_model, make_model in MODEL.items():
         aggk = {k: round(float(np.mean([x[k] for x in K])), desimal[k]) for k in K[0]}
         rows_kal.append(dict(Model=nama_model, Fitur=tag, **aggk))
 t2 = pd.DataFrame(rows)
-t2.to_csv("tabel2_rerata5seed.csv", index=False)
+t2.to_csv(RESULTS / "tabel2_rerata5seed.csv", index=False)
 print(t2.to_string(index=False))
 print("sd AUC antar-seed maksimum:", t2.sd_AUC.max())
 
@@ -282,7 +289,7 @@ print("\n" + "=" * 60)
 print("2b. BUKTI KALIBRASI LANGSUNG  (dekomposisi Brier, slope, intercept)")
 print("=" * 60)
 kal = pd.DataFrame(rows_kal)
-kal.to_csv("kalibrasi_detail.csv", index=False)
+kal.to_csv(RESULTS / "kalibrasi_detail.csv", index=False)
 print(kal.to_string(index=False))
 print(
     "\nSelisih B - A. REL turun = kalibrasi membaik, RES naik = diskriminasi membaik:"
@@ -317,7 +324,7 @@ for t in np.arange(0.20, 0.65, 0.05):
             )
         )
 sw = pd.DataFrame(rows)
-sw.to_csv("sapuan_ambang.csv", index=False)
+sw.to_csv(RESULTS / "sapuan_ambang.csv", index=False)
 kolom = ["Ambang", "Accuracy", "Precision", "Recall", "F1", "TP", "FP", "FN"]
 print(sw[sw.Fitur == "B"][kolom].to_string(index=False))
 
@@ -350,14 +357,14 @@ for nama_model, make_model in MODEL.items():
             )
         )
 sm_df = pd.DataFrame(rows)
-sm_df.to_csv("smote_vs_tanpa.csv", index=False)
+sm_df.to_csv(RESULTS / "smote_vs_tanpa.csv", index=False)
 print(sm_df.to_string(index=False))
 
 # Kalibrasi di bawah SMOTE. Konstanta klip di kalibrasi() tidak diubah, jadi
 # catatan tentang kepekaan slope decision tree tetap berlaku sama persis.
 print("\n4b. KALIBRASI DI BAWAH SMOTE  (tiga seed yang sama)")
 kal_sm = pd.DataFrame(rows_kal)
-kal_sm.to_csv("kalibrasi_smote.csv", index=False)
+kal_sm.to_csv(RESULTS / "kalibrasi_smote.csv", index=False)
 print(kal_sm.to_string(index=False))
 for nama_model in MODEL:
     a = kal_sm[(kal_sm.Model == nama_model) & (kal_sm.SMOTE == "Tidak")].iloc[0]
@@ -402,7 +409,7 @@ for label, smote, t in [
         )
     )
 amb_sm = pd.DataFrame(rows_b)
-amb_sm.to_csv("ambang_vs_smote.csv", index=False)
+amb_sm.to_csv(RESULTS / "ambang_vs_smote.csv", index=False)
 print(amb_sm.to_string(index=False))
 
 print("\n" + "=" * 60)
@@ -430,7 +437,7 @@ for rasio in [1, 1.5, 2, 2.5, 3, 4, 5, 7, 10]:
         )
     )
 co = pd.DataFrame(rows)
-co.to_csv("sapuan_rasio_ongkos.csv", index=False)
+co.to_csv(RESULTS / "sapuan_rasio_ongkos.csv", index=False)
 print(co.to_string(index=False))
 
 print("\n" + "=" * 60)
@@ -469,7 +476,7 @@ for atr in ["jenis_kelamin", "status_perkawinan", "pendidikan"]:
             )
         )
 fair = pd.DataFrame(rows)
-fair.to_csv("keadilan_kelompok.csv", index=False)
+fair.to_csv(RESULTS / "keadilan_kelompok.csv", index=False)
 print(fair.to_string(index=False))
 print("\nRENTANG antar kelompok (maks - min), makin kecil makin merata:")
 for atr in fair.atribut.unique():
@@ -507,7 +514,7 @@ for nama_model in ["Logistic Regression", "Gradient Boosting"]:
             )
         )
 vk = pd.DataFrame(rows)
-vk.to_csv("validasi_kota.csv", index=False)
+vk.to_csv(RESULTS / "validasi_kota.csv", index=False)
 print(vk.to_string(index=False))
 for nama_model in vk.Model.unique():
     s = vk[vk.Model == nama_model]
@@ -538,7 +545,7 @@ imp = pd.DataFrame(
 imp["blok"] = [
     "KOPERASI" if any(k in x for k in FIT_KOP) else "KONVENSIONAL" for x in imp.fitur
 ]
-imp.sort_values("abs", ascending=False).to_csv("koefisien_logreg_B.csv", index=False)
+imp.sort_values("abs", ascending=False).to_csv(RESULTS / "koefisien_logreg_B.csv", index=False)
 
 fa, ta, _ = roc_curve(y, pA)
 fb, tb, _ = roc_curve(y, pB)
@@ -551,7 +558,7 @@ ax.set_ylabel("True positive rate")
 ax.legend(loc="lower right")
 ax.grid(alpha=0.3)
 fig.tight_layout()
-fig.savefig("gambar_roc.png", dpi=600)
+fig.savefig(FIGURES / "gambar_roc.png", dpi=600)
 
 fig, ax = plt.subplots(figsize=(5.5, 5))
 for p, lab, st in [(pA, "Model A", "--"), (pB, "Model B", "-")]:
@@ -563,7 +570,7 @@ ax.set_ylabel("Observed default rate")
 ax.legend()
 ax.grid(alpha=0.3)
 fig.tight_layout()
-fig.savefig("gambar_kalibrasi.png", dpi=600)
+fig.savefig(FIGURES / "gambar_kalibrasi.png", dpi=600)
 
 for t in (0.50, AMBANG_OPERASI):
     tn, fp, fn, tp = confusion_matrix(y, (pB >= t).astype(int)).ravel()
@@ -611,7 +618,7 @@ sens = pd.DataFrame(
 )
 sens = sens.sort_values("koef_C1", key=lambda s: s.abs(), ascending=False)
 sens.index.name = "fitur"
-sens.to_csv("sensitivitas_penalti.csv")
+sens.to_csv(RESULTS / "sensitivitas_penalti.csv")
 print(sens.head(8).to_string())
 print("\n  lima besar DENGAN penalti :", list(k_pakai.abs().nlargest(5).index))
 print("  lima besar TANPA penalti  :", list(k_tanpa.abs().nlargest(5).index))
@@ -637,7 +644,7 @@ for nama_model, make_model in MODEL.items():
             )
         )
 sens_k = pd.DataFrame(rows)
-sens_k.to_csv("sensitivitas_keterlambatan.csv", index=False)
+sens_k.to_csv(RESULTS / "sensitivitas_keterlambatan.csv", index=False)
 print(sens_k.to_string(index=False))
 print("\nSelisih AUC B - A, set fitur penuh lawan tanpa keterlambatan_bayar:")
 p_penuh = t2.pivot(index="Model", columns="Fitur", values="AUC")
@@ -680,7 +687,7 @@ n_ge = int((nol >= selisih_teramati).sum())
 p_emp = (n_ge + 1) / (N_PERM + 1)
 pd.DataFrame(
     {"replikasi": np.arange(1, N_PERM + 1), "selisih_AUC": nol.round(6)}
-).to_csv("uji_permutasi.csv", index=False)
+).to_csv(RESULTS / "uji_permutasi.csv", index=False)
 print(f"  selisih teramati (seed {SEED_UTAMA}) = {selisih_teramati:+.4f}")
 print(f"  sebaran nol dari {N_PERM} permutasi:")
 print(f"    rerata {nol.mean():+.4f}  sd {nol.std(ddof=1):.4f}")

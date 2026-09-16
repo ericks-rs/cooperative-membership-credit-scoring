@@ -18,7 +18,7 @@ from pathlib import Path
 from PIL import Image
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-GAMBAR = Path(__file__).resolve().parent
+GAMBAR = Path(__file__).resolve().parents[1] / "figures"
 KIRI = GAMBAR / "gambar_roc.png"
 KANAN = GAMBAR / "gambar_kalibrasi.png"
 KELUAR = GAMBAR / "fig2_roc_kalibrasi.png"
