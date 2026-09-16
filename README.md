@@ -23,6 +23,8 @@ the working directory.
 |---|---|
 | `dataset.csv` | 2,000 de-identified member records, 25 columns |
 | `DATA_DICTIONARY.md` | English name, unit, and category labels for every column |
+| `dataset_en.csv` | The same records with English column names and labels, for reading only |
+| `make_english_copy.py` | Writes `dataset_en.csv` from `dataset.csv` using the dictionary |
 | `eksperimen_koperasi.py` | Main experiment |
 | `eksperimen_lanjutan.py` | Inference and the four robustness analyses |
 | `gambar_ulang.py` | Redraws the three source figures at 600 dpi |
@@ -103,6 +105,8 @@ duplicate rows.
 Column names and category labels are in Indonesian, matching the cooperative's
 own information system. `DATA_DICTIONARY.md` maps every column to the English
 name used in the paper, states the unit, and translates every category label.
+`dataset_en.csv` is the same file with those English names and labels applied,
+written by `make_english_copy.py`. The analysis scripts read `dataset.csv`.
 
 The records come from a savings and credit cooperative in Indonesia, supplied
 through a provider of cooperative financial system applications. The provider
