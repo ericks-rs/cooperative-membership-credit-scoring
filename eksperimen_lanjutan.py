@@ -1,4 +1,4 @@
-"""Eksperimen lanjutan untuk menutup temuan review naskah JISEBI.
+"""Eksperimen lanjutan untuk menutup pertanyaan yang muncul saat menyusun naskah.
 
 Skrip ini TIDAK mengubah dan TIDAK menjalankan ulang eksperimen_koperasi.py.
 Helper data dan praproses disalin apa adanya dari skrip itu, lalu Bagian 0
