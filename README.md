@@ -26,10 +26,11 @@ they can be run from anywhere.
 | `scripts/translate_dataset.py` | Writes `data/dataset.csv` from `data/dataset_original.csv` |
 | `scripts/main_experiment.py` | Main experiment |
 | `scripts/inference_and_checks.py` | Inference and the additional analyses |
+| `scripts/threshold_sweep_no_lateness.py` | Threshold sweep for logistic regression without payment lateness, and the overlap of the two review lists at 0.30 |
 | `scripts/redraw_figures.py` | Redraws the three source figures at 600 dpi |
 | `scripts/draw_fig1.py` | Draws Fig. 1, the research design, as PDF, SVG, and 600 dpi PNG |
 | `scripts/compose_fig2.py` | Places the ROC and calibration panels side by side for Fig. 2 |
-| `results/*.csv` | Every result file the two experiment scripts write |
+| `results/*.csv` | Every result file the three experiment scripts write |
 | `figures/` | Every figure, plus the PDF and SVG of Fig. 1 |
 | `requirements.txt` | Pinned versions |
 
@@ -41,6 +42,7 @@ python -m venv .venv
 .venv\Scripts\python.exe scripts\translate_dataset.py
 .venv\Scripts\python.exe scripts\main_experiment.py
 .venv\Scripts\python.exe scripts\inference_and_checks.py
+.venv\Scripts\python.exe scripts	hreshold_sweep_no_lateness.py
 .venv\Scripts\python.exe scripts\redraw_figures.py
 .venv\Scripts\python.exe scripts\draw_fig1.py
 .venv\Scripts\python.exe scripts\compose_fig2.py
@@ -51,18 +53,21 @@ Run the main script first. Before doing anything of its own,
 for logistic regression and gradient boosting under both feature sets, exiting if
 any value differs from the stored one. The second script carries its own copy of
 the fitting helpers, and that guard is what keeps the copy from drifting away
-from the main script.
+from the main script. `threshold_sweep_no_lateness.py` carries the same guard
+against `results/sensitivity_payment_lateness.csv` and `results/threshold_sweep.csv`.
 
-The two experiment scripts take about 3.5 and 10.5 minutes respectively on an
-ordinary laptop. The three figure scripts finish in seconds.
+The first two experiment scripts take about 3.5 and 10.5 minutes respectively on an
+ordinary laptop. The third takes a few seconds, and the three figure scripts finish in seconds.
 `draw_fig1.py` reads Times New Roman from the Windows font folder and needs
 poppler's `pdftoppm` on the PATH to rasterise the PNG.
 
 This has been checked rather than assumed. The whole repository was copied to an
 empty folder, `results/`, `figures/`, and `data/dataset.csv` were deleted, the
-six scripts were run in the order above, and each output was compared against
+six scripts then in place were run in the order above, and each output was compared against
 the committed version. All 22 CSV
-files matched byte for byte and every PNG matched pixel for pixel. Only the PDF
+files matched byte for byte and every PNG matched pixel for pixel.
+`threshold_sweep_no_lateness.py` was added afterwards, and its two CSV files
+matched byte for byte across two consecutive runs. Only the PDF
 of Fig. 1 differs between runs, in its embedded creation timestamp.
 
 The versions in `requirements.txt` are pinned, and matching them matters. The
@@ -93,7 +98,8 @@ with one decimal, so 0.298 in the file appears as 29.8 in the table.
 
 The remaining CSV files support statements made in the text rather than a
 numbered table. They cover the permutation test, the sensitivity analysis without
-payment lateness, leave-one-city-out validation, the membership-only model,
+payment lateness, the threshold sweep and review-list overlap without payment
+lateness, leave-one-city-out validation, the membership-only model,
 univariate AUC per variable, the logistic regression coefficients, the cost
 surface, and the stability of the cost-minimising threshold.
 

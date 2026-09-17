@@ -1,0 +1,6 @@
+Model,Flagged,TP,FP,Share_of_sample_pct
+"Model B, full",821,439,382,41.05
+"Model B, without payment lateness",839,437,402,41.95
+Flagged by both,772,423,349,38.6
+Flagged only by the full model,49,16,33,2.45
+Flagged only without payment lateness,67,14,53,3.35
