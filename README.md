@@ -42,7 +42,7 @@ python -m venv .venv
 .venv\Scripts\python.exe scripts\translate_dataset.py
 .venv\Scripts\python.exe scripts\main_experiment.py
 .venv\Scripts\python.exe scripts\inference_and_checks.py
-.venv\Scripts\python.exe scripts	hreshold_sweep_no_lateness.py
+.venv\Scripts\python.exe scripts\threshold_sweep_no_lateness.py
 .venv\Scripts\python.exe scripts\redraw_figures.py
 .venv\Scripts\python.exe scripts\draw_fig1.py
 .venv\Scripts\python.exe scripts\compose_fig2.py
