@@ -92,7 +92,7 @@ text(63.5,42,'plus 9 membership',9,width=33)
 text(63.5,46,'variables',9,width=33)
 
 panel(3,55,79,45,'Shared training and validation')
-for yy,s in [(65.6,'One-hot encoding and standardization'),(69.2,'fitted on training data only'),(73.6,'Stratified 5-fold cross-validation'),(77.2,'repeated across five seeds'),(81.6,'Logistic regression, decision tree,'),(85.2,'random forest, gradient boosting,'),(88.8,'and support vector machine'),(93.2,'Matched settings within each algorithm'),(96.8,'and the same splits for Model A and Model B')]:
+for yy,s in [(65.6,'One-hot encoding with predefined categories,'),(69.2,'standardization fitted on training folds only'),(73.6,'Stratified 5-fold cross-validation'),(77.2,'repeated across five seeds'),(81.6,'Logistic regression, decision tree,'),(85.2,'random forest, gradient boosting,'),(88.8,'and support vector machine'),(93.2,'Matched settings within each algorithm'),(96.8,'and the same splits for Model A and Model B')]:
     text(42.5,yy,s,9,width=75)
 
 panel(3,105,79,13,'Out-of-fold predictions')
