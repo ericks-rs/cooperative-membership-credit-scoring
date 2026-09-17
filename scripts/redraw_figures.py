@@ -35,6 +35,9 @@ FIGURES.mkdir(exist_ok=True)
 matplotlib.use("Agg")
 
 DPI = 600
+# Fig. 2 is printed 12.6 cm wide, so each 5.5 in panel is scaled to about 0.45.
+# These sizes give roughly 8 pt labels, 7 pt tick labels, and 7 pt legend text on the page.
+LABEL, TICK, LEGEND = 18, 16, 15
 PRIMARY_SEED = 42
 OPERATING_THRESHOLD = 0.30
 TOLERANCE = 0.01
@@ -139,12 +142,13 @@ print(f"AUC Model A {roc_auc_score(y, pA):.4f}, Model B {roc_auc_score(y, pB):.4
 fa, ta, _ = roc_curve(y, pA)
 fb, tb, _ = roc_curve(y, pB)
 fig, ax = plt.subplots(figsize=(5.5, 5))
-ax.plot(fa, ta, "--", lw=1.8, label=f"Model A (AUC {roc_auc_score(y, pA):.4f})")
-ax.plot(fb, tb, "-", lw=1.8, label=f"Model B (AUC {roc_auc_score(y, pB):.4f})")
-ax.plot([0, 1], [0, 1], ":", color="gray", lw=1)
-ax.set_xlabel("False positive rate")
-ax.set_ylabel("True positive rate")
-ax.legend(loc="lower right")
+ax.plot(fa, ta, "--", lw=2.6, label=f"Model A (AUC {roc_auc_score(y, pA):.4f})")
+ax.plot(fb, tb, "-", lw=2.6, label=f"Model B (AUC {roc_auc_score(y, pB):.4f})")
+ax.plot([0, 1], [0, 1], ":", color="gray", lw=1.5)
+ax.set_xlabel("False positive rate", fontsize=LABEL)
+ax.set_ylabel("True positive rate", fontsize=LABEL)
+ax.tick_params(labelsize=TICK)
+ax.legend(loc="lower right", fontsize=LEGEND)
 ax.grid(alpha=0.3)
 fig.tight_layout()
 fig.savefig(FIGURES / "roc_curves.png", dpi=DPI)
@@ -154,11 +158,12 @@ plt.close(fig)
 fig, ax = plt.subplots(figsize=(5.5, 5))
 for p, lab, st in [(pA, "Model A", "--"), (pB, "Model B", "-")]:
     fr, mp = calibration_curve(y, p, n_bins=10, strategy="quantile")
-    ax.plot(mp, fr, st, marker="o", ms=4, lw=1.6, label=lab)
-ax.plot([0, 1], [0, 1], ":", color="gray", lw=1, label="Perfectly calibrated")
-ax.set_xlabel("Mean predicted probability")
-ax.set_ylabel("Observed default rate")
-ax.legend()
+    ax.plot(mp, fr, st, marker="o", ms=7, lw=2.4, label=lab)
+ax.plot([0, 1], [0, 1], ":", color="gray", lw=1.5, label="Perfectly calibrated")
+ax.set_xlabel("Mean predicted probability", fontsize=LABEL)
+ax.set_ylabel("Observed default rate", fontsize=LABEL)
+ax.tick_params(labelsize=TICK)
+ax.legend(fontsize=LEGEND)
 ax.grid(alpha=0.3)
 fig.tight_layout()
 fig.savefig(FIGURES / "calibration_curves.png", dpi=DPI)
