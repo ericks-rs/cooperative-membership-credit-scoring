@@ -1,7 +1,6 @@
 # Cooperative membership variables in credit scoring
 
-Data and code for the paper *Cooperative membership variables add predictive
-value to early loan default prediction*, submitted to Applied Computer Science.
+Data and code for the paper *Cooperative membership variables improve early loan default prediction*, submitted to Applied Computer Science.
 
 The paper asks a single question. A savings and credit cooperative observes
 things a bank does not, such as how long someone has been a member, what they
@@ -150,8 +149,12 @@ validation is not possible with this file.
 
 ## Licence
 
-Code is released under the MIT Licence, in `LICENSE`.
+The authors' code, documentation, datasets, and derived result files are
+released under the Creative Commons Attribution 4.0 International License
+(CC BY 4.0). See `LICENSE` for the license notice and link to the full legal
+code, and `LICENSE-DATA` for the data notice and suggested attribution.
 
-The dataset and the derived result files are released under the Creative Commons
-Attribution 4.0 International Licence, in `LICENSE-DATA`. Reuse for any purpose
-is fine, with attribution given by citing the article.
+Reuse, adaptation, and redistribution are permitted, including commercially,
+subject to the license terms. Give appropriate credit, link to the license,
+and indicate whether changes were made. Third-party software and materials
+retain their respective licenses.
